@@ -3,7 +3,7 @@ DROP database IF EXISTS augolfdb;
 CREATE SCHEMA `augolfdb`;
 
 CREATE TABLE `augolfdb`.`user` (
-  `userId` INT NOT NULL,
+  `userId` INT NOT NULL AUTO_INCREMENT,
   `firstName` VARCHAR(50) NOT NULL,
   `lastName` VARCHAR(50) NOT NULL,
   `userName` VARCHAR(50) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE `augolfdb`.`user` (
   UNIQUE INDEX `userId_UNIQUE` (`userId` ASC) VISIBLE);
   
   CREATE TABLE `augolfdb`.`courselookup` (
-  `courseId` INT NOT NULL,
+  `courseId` INT NOT NULL AUTO_INCREMENT,
   `clubName` VARCHAR(45) NOT NULL,
   `courseName` VARCHAR(45) NOT NULL,
   `courseCity` VARCHAR(45) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `augolfdb`.`user` (
   UNIQUE INDEX `courseId_UNIQUE` (`courseId` ASC) VISIBLE);
   
   CREATE TABLE `augolfdb`.`scorecardlookup` (
-  `scorecardId` INT NOT NULL,
+  `scorecardId` INT NOT NULL AUTO_INCREMENT,
   `userId` INT NOT NULL,
   `courseId` INT NOT NULL,
   `score` INT NOT NULL,
