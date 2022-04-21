@@ -9,5 +9,8 @@
         <module name="AuburnGolfScoreKeeper" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AuburnGolfScoreKeeper" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
