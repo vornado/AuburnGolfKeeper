@@ -1,0 +1,14 @@
+<AccountStatus>
+    <Status>
+        <ID>1</ID>
+        <Name>pending</Name>
+    </Status>
+    <Status>
+        <ID>2</ID>
+        <Name>denied</Name>
+    </Status>
+    <Status>
+        <ID>3</ID>
+        <Name>approved</Name>
+    </Status>
+</AccountStatus>
