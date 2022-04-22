@@ -1,4 +1,4 @@
-package com.agsk.auburngolfscorekeeper;
+package com.example.auburngolfscorekeeper;
 
 import java.io.*;
 import javax.servlet.http.*;
