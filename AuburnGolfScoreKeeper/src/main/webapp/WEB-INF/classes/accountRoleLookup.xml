@@ -1,0 +1,14 @@
+<AccountRole>
+    <Role>
+        <ID>1</ID>
+        <Name>basic</Name>
+    </Role>
+    <Role>
+        <ID>2</ID>
+        <Name>moderator</Name>
+    </Role>
+    <Role>
+        <ID>3</ID>
+        <Name>admin</Name>
+    </Role>
+</AccountRole>

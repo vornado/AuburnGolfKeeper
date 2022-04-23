@@ -1,8 +1,8 @@
 package com.example.augolf.services;
 
-import com.example.augolf.models.UserModel;
-
+import com.example.augolf.model.AccountModel;
 import java.sql.*;
+import java.lang.String;
 
 public class MySQLdb {
     String dbConnectionString = "jdbc:mysql://localhost:3306/augolfdb";
@@ -29,13 +29,14 @@ public class MySQLdb {
         return instance;
     }
 
-    public UserModel doLogin(String userName, String userPass) {
+    public AccountModel doLogin(String userName, String userPass) {
         try{
-            UserModel userModel = null;
-            String query = "SELECT * FROM user WHERE userName= ? and password= ?";
+            AccountModel userModel = null;
+            String query = "SELECT * FROM user WHERE userName= ? and password= ? and isActive= ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, userPass);
+            preparedStatement.setInt(3, 1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()){
@@ -45,11 +46,10 @@ public class MySQLdb {
                 int gender = resultSet.getInt("gender");
                 int accountStatusId = resultSet.getInt("accountStatusId");
                 int accountRoleId = resultSet.getInt("accountRoleId");
-                UserModel temp = new UserModel(firstName, lastName, userName ,email, gender, accountStatusId, accountRoleId);
+                userModel = new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId);
             }
             resultSet.close();
             preparedStatement.close();
-
             return userModel;
         }
         catch (SQLException ex){

@@ -9,6 +9,7 @@
 <p>
     <div>
         <form action="LoginServlet" method="POST">
+            <div style="color: #FF0000;">${errorMessage}</div>
             <span class="">Enter Username: <input type="text" name="username" required></span>
             <span>Enter Password: <input type="password" name="password" required></span>
             <span><input type="submit" value="Login"> </span>
