@@ -13,4 +13,13 @@
         <url-pattern>/Login/LoginServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/Register/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
