@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 
 public class AccountModel implements Serializable {
+    private int accountId;
     private String firstName;
     private String lastName;
     private String userName;
@@ -12,7 +13,7 @@ public class AccountModel implements Serializable {
     private int accountStatusId;
     private int accountRoleId;
 
-    public AccountModel(String firstName, String lastName, String email, int gender, int accountStatusId, int accountRoleId) {
+    public AccountModel(String firstName, String lastName, String email, int gender, int accountStatusId, int accountRoleId, int accountId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

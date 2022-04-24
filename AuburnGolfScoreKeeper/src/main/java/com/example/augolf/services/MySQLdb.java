@@ -43,7 +43,8 @@ public class MySQLdb {
             int gender = resultSet.getInt("gender");
             int accountStatusId = resultSet.getInt("accountStatusId");
             int accountRoleId = resultSet.getInt("accountRoleId");
-            return new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId);
+            int userId = resultSet.getInt("userId");
+            return new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId, userId);
         } catch (SQLException e) {
             return null;
         }
@@ -156,7 +157,6 @@ public class MySQLdb {
 
     //endregion
 
-
     //region Inserts
 
     public boolean registerUser(RegisterModel rm) {
@@ -221,8 +221,9 @@ public class MySQLdb {
         }
     }
 
-    //regions
+    //endregion
 
+    //region functionality
 
     public AccountModel doLogin(String userName, String userPass) {
         try {
@@ -244,4 +245,6 @@ public class MySQLdb {
             return null;
         }
     }
+
+    //endregion
 }
