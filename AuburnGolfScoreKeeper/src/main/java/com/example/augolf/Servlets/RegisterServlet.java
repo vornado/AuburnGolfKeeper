@@ -49,8 +49,8 @@ public class RegisterServlet extends HttpServlet {
                 MySQLdb db = MySQLdb.getInstance();
                 RegisterModel rm = null;
                 rm = new RegisterModel(username, password, firstName, lastName, email, gender);
-                if (db.checkUsernameValid(rm)){
-                    if (!db.checkEmailValid(rm)){
+                if (db.checkUsernameValid(rm.getUsername())){
+                    if (!db.checkEmailValid(rm.getEmail())){
                         request.setAttribute("errorMessageEmail", "The email provided is already in use. Please Login");
                         request.getRequestDispatcher("/Account/registration.jsp").forward(request, response);
                     }
