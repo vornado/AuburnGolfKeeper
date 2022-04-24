@@ -59,6 +59,32 @@ public class MySQLdb {
         }
     }
 
+
+    //Check to see if a username if valid
+    //returns false if username is already taken
+    //returns true if the username is ready to be used
+    public boolean checkEmailValid(RegisterModel rm) {
+        try {
+            //Lock Table maybe
+
+            String query = "SELECT * FROM user WHERE email= ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, rm.getEmail());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                resultSet.close();
+                preparedStatement.close();
+                return false;
+            } else {
+                resultSet.close();
+                preparedStatement.close();
+                return true;
+            }
+        } catch (Exception exception) {
+            return false;
+        }
+    }
     public boolean registerUser(RegisterModel rm) {
         try {
             String query = "INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified) "
@@ -79,9 +105,9 @@ public class MySQLdb {
             preparedStatement.setString(10, currentTime);
             preparedStatement.setString(11, currentTime);
 
-            boolean resultSet = preparedStatement.execute();
+            int resultSet = preparedStatement.executeUpdate();
             preparedStatement.close();
-            return resultSet;
+            return resultSet == 1;
         } catch (Exception ex) {
             return false;
         }

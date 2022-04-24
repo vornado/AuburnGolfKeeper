@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Auburn Golf Score Keeper - Account Pending</title>
+    <link rel="stylesheet" href="pendingStyle.css">
 </head>
 <body>
-
+<div>
+    <h1>Account Pending</h1>
+    <h2>This account is currently pending.</h2>
+    <span class="pendingText">Please wait for the admin or moderator to approve your account.</span>
+</div>
 </body>
 </html>

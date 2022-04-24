@@ -17,12 +17,12 @@
     <span class="regText">Register</span>
     <div style="color: #FF0000;">${errorMessage}</div>
     <div style="color: #FF0000;">${errorMessageUsername}</div>
-    <span class="regText"> <input type="text" placeholder="Enter your username" id="regUsername" name="regUsername" required> </span>
+    <span class="regText"> <input type="text" placeholder="Enter your username" id="regUsername" name="regUsername" minlength="5" maxlength="45" required> </span>
     <div style="color: #FF0000;">${errorMessagePassword}</div>
-    <span class="regText"> <input type="password" placeholder="Enter your password" id="regPassword" name="regPassword" required> </span>
+    <span class="regText"> <input type="password" placeholder="Enter your password" id="regPassword" minlength="5" name="regPassword" maxlength="45" required> </span>
     <span class="regText"> <input type="password" placeholder="Confirm Password" id="regPasswordconfirm" name="regPassConfirm" required> </span>
-    <span class="regText"> <input type="text" placeholder="Enter your First Name" id="regFirstName" name="regFirstName"> </span>
-    <span class="regText"> <input type="text" placeholder="Enter your Last Name" id="regLastName" name="regLastName"> </span>
+    <span class="regText"> <input type="text" placeholder="Enter your First Name" id="regFirstName" maxlength="45" name="regFirstName"> </span>
+    <span class="regText"> <input type="text" placeholder="Enter your Last Name" id="regLastName" maxlength="45" name="regLastName"> </span>
     <span class="regText">
       <select id="genderId" name="regGender">
         <option value="-1" selected>Prefer not to say.</option>
@@ -31,7 +31,7 @@
       </select>
     </span>
     <div style="color: #FF0000;">${errorMessageEmail}</div>
-    <span class="regText"> <input type="email" placeholder="Enter your email" id="regEmail" name="regEmail"> </span>
+    <span class="regText"> <input type="email" placeholder="Enter your email" id="regEmail" maxlength="45" name="regEmail"> </span>
     <input type="submit" value="Register">
   </form>
 </div>

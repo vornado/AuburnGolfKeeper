@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/Register/RegisterServlet</url-pattern>
+        <url-pattern>/Account/RegisterServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
