@@ -14,9 +14,10 @@ public class AccountModel implements Serializable {
     private int accountRoleId;
     private int logoutStatus;
 
-    public AccountModel(String firstName, String lastName, String email, int gender, int accountStatusId, int accountRoleId, int accountId, int logoutStatus) {
+    public AccountModel(String firstName, String lastName, String userName, String email, int gender, int accountStatusId, int accountRoleId, int accountId, int logoutStatus) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.email = email;
         this.gender = gender;
         this.accountStatusId = accountStatusId;

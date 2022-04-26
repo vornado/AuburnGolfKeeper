@@ -40,11 +40,12 @@ public class MySQLdb {
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
             String email = resultSet.getString("email");
+            String userName = resultSet.getString("userName");
             int gender = resultSet.getInt("gender");
             int accountStatusId = resultSet.getInt("accountStatusId");
             int accountRoleId = resultSet.getInt("accountRoleId");
             int userId = resultSet.getInt("userId");
-            return new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId, userId, 1);
+            return new AccountModel(firstName, lastName, userName,email, gender, accountStatusId, accountRoleId, userId, 1);
         } catch (SQLException e) {
             return null;
         }
@@ -63,9 +64,10 @@ public class MySQLdb {
     public boolean checkUsernameValid(String username) {
         try {
             //Lock Table maybe
-            String query = "SELECT * FROM user WHERE userName= ?";
+            String query = "SELECT * FROM user WHERE userName= ? AND isActive=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
+            preparedStatement.setInt(2,1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -85,9 +87,10 @@ public class MySQLdb {
     public AccountModel lookupUserByEmail(String email){
         try {
             //Lock Table maybe
-            String query = "SELECT * FROM user WHERE email= ?";
+            String query = "SELECT * FROM user WHERE email= ? AND isActive=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, email);
+            preparedStatement.setInt(2,1);
             ResultSet resultSet = preparedStatement.executeQuery();
             AccountModel am = null;
             if (resultSet.next()) {
@@ -109,9 +112,10 @@ public class MySQLdb {
     public AccountModel getUserByUserName(String username){
         try {
             //Lock Table maybe
-            String query = "SELECT * FROM user WHERE userName= ?";
+            String query = "SELECT * FROM user WHERE userName= ? AND isActive=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
+            preparedStatement.setInt(2, 1);
             ResultSet resultSet = preparedStatement.executeQuery();
             AccountModel am = null;
             if (resultSet.next()) {
@@ -136,19 +140,20 @@ public class MySQLdb {
     public boolean checkEmailValid(String email) {
         try {
             //Lock Table maybe
-            String query = "SELECT * FROM user WHERE email= ?";
+            String query = "SELECT * FROM user WHERE email= ? AND isActive=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, email);
+            preparedStatement.setInt(2, 1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 resultSet.close();
                 preparedStatement.close();
-                return false;
+                return true;
             } else {
                 resultSet.close();
                 preparedStatement.close();
-                return true;
+                return false;
             }
         } catch (Exception exception) {
             return false;
@@ -193,17 +198,27 @@ public class MySQLdb {
 
     public String generatingPassword(AccountModel am){
         try{
-            byte[] array = new byte[10];
-            new Random().nextBytes(array);
-            String generatedString = new String(array, Charset.forName("UTF-8"));
-            String query = "Update user SET password= ?, lastModified=? where username= ? AND email= ? AND firstName= ?";
+            int leftLimit = 97; // letter 'a'
+            int rightLimit = 122; // letter 'z'
+            int targetStringLength = 10;
+            Random random = new Random();
+            StringBuilder buffer = new StringBuilder(targetStringLength);
+            for (int i = 0; i < targetStringLength; i++) {
+                int randomLimitedInt = leftLimit + (int)
+                        (random.nextFloat() * (rightLimit - leftLimit + 1));
+                buffer.append((char) randomLimitedInt);
+            }
+            String generatedString = buffer.toString();
+            String query = "Update user SET password= ?, lastModified=?, lastModifiedBy where username= ? AND email= ? AND firstName= ? AND isActive=?";
             Date now = new Date();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, generatedString);
             preparedStatement.setString(2, getDateTime(now));
-            preparedStatement.setString(3, am.getUserName());
-            preparedStatement.setString(4, am.getEmail());
-            preparedStatement.setString(5, am.getFirstName());
+            preparedStatement.setString(3, "SYSTEM");
+            preparedStatement.setString(4, am.getUserName());
+            preparedStatement.setString(5, am.getEmail());
+            preparedStatement.setString(6, am.getFirstName());
+            preparedStatement.setInt(7, 1);
             int resultSet = preparedStatement.executeUpdate();
             if (resultSet == 1){
                 return generatedString;
