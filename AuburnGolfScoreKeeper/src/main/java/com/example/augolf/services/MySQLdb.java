@@ -87,8 +87,8 @@ public class MySQLdb {
     }
     public boolean registerUser(RegisterModel rm) {
         try {
-            String query = "INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             String currentTime = dateFormat.format(new Date());
 
@@ -104,7 +104,7 @@ public class MySQLdb {
             preparedStatement.setInt(9, 1);
             preparedStatement.setString(10, currentTime);
             preparedStatement.setString(11, currentTime);
-
+            preparedStatement.setString(12, "SYSTEM");
             int resultSet = preparedStatement.executeUpdate();
             preparedStatement.close();
             return resultSet == 1;
