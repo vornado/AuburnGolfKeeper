@@ -15,7 +15,10 @@ CREATE TABLE `augolfdb`.`user` (
   `accountRoleId` INT NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `lastModified` DATETIME NOT NULL,
+  `lastModifiedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`userId`),
+  UNIQUE INDEX `userName_UNIQUE` (`userName` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `userId_UNIQUE` (`userId` ASC) VISIBLE);
   
   CREATE TABLE `augolfdb`.`courselookup` (
@@ -27,6 +30,7 @@ CREATE TABLE `augolfdb`.`user` (
   `coursePar` VARCHAR(18) NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `lastModified` DATETIME NOT NULL,
+  `lastModifiedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`courseId`),
   UNIQUE INDEX `courseId_UNIQUE` (`courseId` ASC) VISIBLE);
   
@@ -39,6 +43,7 @@ CREATE TABLE `augolfdb`.`user` (
   `picture` BLOB NULL,
   `createdDate` DATETIME NULL,
   `lastModified` DATETIME NULL,
+  `lastModifiedBy` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`scorecardId`),
   UNIQUE INDEX `scorecardId_UNIQUE` (`scorecardId` ASC) VISIBLE,
   INDEX `userIdFK_idx` (`userId` ASC) VISIBLE,
@@ -53,7 +58,3 @@ CREATE TABLE `augolfdb`.`user` (
     REFERENCES `augolfdb`.`courselookup` (`courseId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-  
-  
-  
-  

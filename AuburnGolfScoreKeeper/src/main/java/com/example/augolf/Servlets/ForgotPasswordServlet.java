@@ -49,7 +49,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                     request.getRequestDispatcher("/Account/forgotPassword.jsp").forward(request, response);
                 }
                 String password = null;
-                password = db.updatePassword(am);
+                password = db.generatingPassword(am);
 
                 if (password == null){
                     request.setAttribute("errorMessage", "Failed to reset password. Please try again later.");

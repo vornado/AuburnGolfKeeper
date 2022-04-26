@@ -44,7 +44,7 @@ public class MySQLdb {
             int accountStatusId = resultSet.getInt("accountStatusId");
             int accountRoleId = resultSet.getInt("accountRoleId");
             int userId = resultSet.getInt("userId");
-            return new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId, userId);
+            return new AccountModel(firstName, lastName, email, gender, accountStatusId, accountRoleId, userId, 1);
         } catch (SQLException e) {
             return null;
         }
@@ -106,7 +106,7 @@ public class MySQLdb {
     }
 
 
-    public AccountModel lookupUserByUserName(String username){
+    public AccountModel getUserByUserName(String username){
         try {
             //Lock Table maybe
             String query = "SELECT * FROM user WHERE userName= ?";
@@ -190,7 +190,7 @@ public class MySQLdb {
 
     //region Update
 
-    public String updatePassword(AccountModel am){
+    public String generatingPassword(AccountModel am){
         try{
             byte[] array = new byte[10];
             new Random().nextBytes(array);
@@ -209,7 +209,7 @@ public class MySQLdb {
             }
             else if (resultSet != 1){
                 //panic
-                //consider implementing a logger
+                //ToDo: consider implementing a logger
                 return null;
             }
             else{

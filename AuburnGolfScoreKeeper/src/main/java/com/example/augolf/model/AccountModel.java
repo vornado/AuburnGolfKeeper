@@ -12,14 +12,16 @@ public class AccountModel implements Serializable {
     private int gender;
     private int accountStatusId;
     private int accountRoleId;
+    private int logoutStatus;
 
-    public AccountModel(String firstName, String lastName, String email, int gender, int accountStatusId, int accountRoleId, int accountId) {
+    public AccountModel(String firstName, String lastName, String email, int gender, int accountStatusId, int accountRoleId, int accountId, int logoutStatus) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
         this.accountStatusId = accountStatusId;
         this.accountRoleId = accountRoleId;
+        this.logoutStatus = logoutStatus;
     }
 
     public String getFirstName() {
