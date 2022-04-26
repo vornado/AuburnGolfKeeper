@@ -161,9 +161,10 @@ public class MySQLdb {
 
     public boolean registerUser(RegisterModel rm) {
         try {
-            String query = "INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            Date now = new Date();
+            String query = "INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            String currentTime = dateFormat.format(new Date());
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, rm.getFirstName());
@@ -175,9 +176,9 @@ public class MySQLdb {
             preparedStatement.setInt(7, 1);
             preparedStatement.setInt(8, 1);
             preparedStatement.setInt(9, 1);
-            preparedStatement.setString(10, getDateTime(now));
-            preparedStatement.setString(11, getDateTime(now));
-
+            preparedStatement.setString(10, currentTime);
+            preparedStatement.setString(11, currentTime);
+            preparedStatement.setString(12, "SYSTEM");
             int resultSet = preparedStatement.executeUpdate();
             preparedStatement.close();
             return resultSet == 1;

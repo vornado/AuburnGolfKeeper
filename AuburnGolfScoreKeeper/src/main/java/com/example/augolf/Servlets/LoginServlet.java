@@ -15,8 +15,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Getting user's username and password that they passed
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("uname");
+        String password = request.getParameter("psw");
 
         //If somehow the user information was passed null reject it
         if (username == null || password == null) {
@@ -55,11 +55,11 @@ public class LoginServlet extends HttpServlet {
                 }
                 //Checking if user is pending
                 else if (userModel.getAccountStatusId() == 1){
-                    request.getRequestDispatcher("/pending.jsp").forward(request, response);
+                    request.getRequestDispatcher("/Account/Wait.jsp").forward(request, response);
                 }
                 //failed to find the user send them to denied
                 else{
-                    request.getRequestDispatcher("/denied.jsp").forward(request, response);
+                    request.getRequestDispatcher("/Account/Deny.jsp").forward(request, response);
                 }
             }
 
