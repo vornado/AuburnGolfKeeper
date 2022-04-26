@@ -18,7 +18,7 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="Login/login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
-        <a href="/About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+        <a href="About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
     </div>
@@ -27,7 +27,7 @@
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="Login/login.jsp" class="w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="/About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
+        <a href="About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
     </div>
@@ -72,9 +72,6 @@
     <h1 class="w3-margin w3-xlarge">To some golfers, the greatest handicap is the ability to add correctly.</h1>
 </div>
 <%--<p>--%>
-<%--    <span class="infoText">This website is designed for golfers by golfers!</span>--%>
-<%--    <span class="infoText">Once you have access to this website you will be able to add courses, and your golfing score!</span>--%>
-<%--    <span class="infoText">Watch how you improve and calculate your golfing handicap!</span>--%>
 <%--    <span class="infoText">Before proceeding, this website stores your information, but we will never sell your information.</span>--%>
 <%--    <span class="infoText">This information is private to you and we intend to keep it that way!</span>--%>
 <%--    <span class="infoText">By clicking the button below. You are agreeing with out terms.</span>--%>

@@ -11,7 +11,7 @@
 <h2>Auburn Golfkeeper Registration Page</h2>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
-<form action="SignUp/SignUpServlet" method="post">
+<form action="RegisterServlet" method="post">
 
     <div class="container">
         <label><b>Username</b></label>
@@ -24,11 +24,20 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
         <input type="password" placeholder="Confirm Password" name="psw" required>
         <label><b>Gender</b></label>
         <br>
-        <label><input type="checkbox"  name="female"> Female</label>
+      <select id="genderId" name="regGender">
+        <option value="-1" selected>Prefer not to say.</option>
+        <option value="0">Male</option>
+        <option value="1">Female</option>
+      </select>
         <br>
-        <label><input type="checkbox"  name="male"> Male</label>
+        <label><b>First Name</b></label>
+        <input type="text" placeholder="First Name" name="regFirstName" required>
         <br>
-        <label><input type="checkbox"  name="rathernotsay"> Rather Not Say</label>
+        <label><b>Last Name</b></label>
+        <input type="text" placeholder="Last Name" name="regLastName" required>
+        <br>
+        <label><b>Email</b></label>
+        <input type="email" placeholder="Enter your email" id="regEmail" maxlength="45" name="regEmail" required>
         <br>
         <button type="submit">Registration</button>
     </div>
