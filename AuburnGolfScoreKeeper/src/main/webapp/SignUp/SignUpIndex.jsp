@@ -52,8 +52,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
             <option value="1">Female</option>
         </select>
         <br>
-        <label><b>First Name</b></label>
-        <input type="text" placeholder="First Name" name="regFirstName" required>
+        <label><b>First Name</b></label> ame" name="regFirstName" required>
         <br>
         <label><b>Last Name</b></label>
         <input type="text" placeholder="Last Name" name="regLastName" required>
