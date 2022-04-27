@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
             if (userModel == null) {
                 //No user found
                 request.setAttribute("errorMessage", "Username or Password is invalid.");
-                request.getRequestDispatcher("/Login/Login.jsp").forward(request, response);
+                request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
             } else {
                 //Found the user
                 HttpSession session = request.getSession();
@@ -51,15 +51,15 @@ public class LoginServlet extends HttpServlet {
                 //ToDo Need to actually use the AccountStatusXML
                 //Is the user approved
                 if (userModel.getAccountStatusId() == 3){
-                    request.getRequestDispatcher("/Home/home.jsp").forward(request, response);
+                    request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
                 }
                 //Checking if user is pending
                 else if (userModel.getAccountStatusId() == 1){
-                    request.getRequestDispatcher("/Account/Wait.jsp").forward(request, response);
+                    request.getRequestDispatcher("../Account/Wait.jsp").forward(request, response);
                 }
                 //failed to find the user send them to denied
                 else{
-                    request.getRequestDispatcher("/Account/Deny.jsp").forward(request, response);
+                    request.getRequestDispatcher("../Account/Deny.jsp").forward(request, response);
                 }
             }
 

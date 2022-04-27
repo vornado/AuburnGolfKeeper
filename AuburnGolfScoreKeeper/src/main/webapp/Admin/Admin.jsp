@@ -11,7 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
     <title>Auburn Golf Score Keeper</title>
     <link rel="stylesheet" href="Admin.css">
 
@@ -159,8 +158,8 @@
         $(document).on("click", ".edit", function(){
             $(this).parents("tr").find("td:not(:last-child)").each(function(){
                 $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">'); //change SAT
-                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">'); //changes SAT
+                $(this).html('<select id="roleId" name="role" value="' + rUserValue + '">'); //change SAT
+                $(this).html('<select id="statusId" name="status" value="' + sUserValue + '">'); //changes SAT
             });
             $(this).parents("tr").find(".add, .edit").toggle();
             $(".add-new").attr("disabled", "disabled");
