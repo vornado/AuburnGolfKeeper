@@ -21,13 +21,13 @@ public class LoginServlet extends HttpServlet {
         //If somehow the user information was passed null reject it
         if (username == null || password == null) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
-            request.getRequestDispatcher("/Login/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
         }
 
         //If somehow the user information was passed blank reject it
         if (username.length() == 0 || password.length() == 0) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
-            request.getRequestDispatcher("/Login/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
         }
         try {
             //trying to find user in the db table

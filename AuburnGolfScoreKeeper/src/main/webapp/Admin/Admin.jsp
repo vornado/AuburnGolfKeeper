@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
     <title>Auburn Golf Score Keeper</title>
     <link rel="stylesheet" href="Admin.css">
 
@@ -19,8 +20,8 @@
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="../Home/home.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-        <a href="../Login/Login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
+        <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large">Logout</a>
         <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
@@ -30,12 +31,13 @@
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-        <a href="../Home/home.jsp"class="w3-bar-item w3-button w3-padding-large">Home</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">Login</a>
+        <a href="../index.jsp"class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="../index.jsp"class="w3-bar-item w3-button w3-padding-large">Logout</a>
         <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
+        <a href="#"  class="w3-bar-item w3-button w3-padding-large">Admin</a>
     </div>
 </div>
 <h2>Auburn GolfKeeper Admin Page</h2>
@@ -44,9 +46,6 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-8"><h2><b>Admin Details</b></h2></div>
-                <form action="AdminServlet" method="get">
-                    <input type="submit" value="Get Users">
-                </form>
                 <div class="col-sm-4">
 <%--                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>--%>
                 </div>
@@ -68,6 +67,21 @@
             </form>
             <c:forEach items="${requestScope.users}" var="item" varStatus="status">
             <tr>
+                <%--                <td>Sira Toure</td>--%>
+                <%--                <td>--%>
+                <%--                    <select id="roleId" name="role">--%>
+                <%--                        <option value="1">Basic</option>--%>
+                <%--                        <option value="2">Moderator</option>--%>
+                <%--                        <option value="3">Admin</option>--%>
+                <%--                    </select>--%>
+                <%--                </td>--%>
+                <%--                <td>--%>
+                <%--                    <select id="statusId" name="status">--%>
+                <%--                        <option value="1">Pending</option>--%>
+                <%--                        <option value="2">Denied</option>--%>
+                <%--                        <option value="3">Approval</option>--%>
+                <%--                    </select>--%>
+                <%--                </td>--%>
                     <td><c:out value = "${item.getUserName()}"/></td>
                     <td>
                         <c:choose>
@@ -149,17 +163,30 @@
             }
         });
         // Edit row on edit button click
-        var rId = document.getElementById("roleId");
-        var rUser = rId.value;
-        var rUserValue =rId.options[rId.selectedIndex].text;
-        var sId = document.getElementById("statusId");
-        var sUser = sId.value;
-        var sUserValue =sId.options[sId.selectedIndex].text;
+
+
+        // // Edit row on edit button click
+        // var rId = document.getElementById("roleId");
+        // var rUser = rId.value;
+        // var rUserValue =rId.options[rId.selectedIndex].text;
+        // var sId = document.getElementById("statusId");
+        // var sUser = sId.value;
+        // var sUserValue =sId.options[sId.selectedIndex].text;
+        // $(document).on("click", ".edit", function(){
+        //     $(this).parents("tr").find("td:not(:last-child)").each(function(){
+        //         $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+        //         // $(this).html('<select id="roleId" name="role" value="' + rUserValue + '">'); //change SAT
+        //         // $(this).html('<select id="statusId" name="status" value="' + sUserValue + '">'); //changes SAT
+        //     });
+        //     $(this).parents("tr").find(".add, .edit").toggle();
+        //     $(".add-new").attr("disabled", "disabled");
+        // });
+
+
+
         $(document).on("click", ".edit", function(){
             $(this).parents("tr").find("td:not(:last-child)").each(function(){
                 $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                $(this).html('<select id="roleId" name="role" value="' + rUserValue + '">'); //change SAT
-                $(this).html('<select id="statusId" name="status" value="' + sUserValue + '">'); //changes SAT
             });
             $(this).parents("tr").find(".add, .edit").toggle();
             $(".add-new").attr("disabled", "disabled");

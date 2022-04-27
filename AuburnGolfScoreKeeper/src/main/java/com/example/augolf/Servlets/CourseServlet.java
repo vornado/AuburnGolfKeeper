@@ -17,7 +17,7 @@ public class CourseServlet extends HttpServlet {
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
             if (am == null){
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
                 return;
             }
             MySQLdb db = MySQLdb.getInstance();
@@ -34,7 +34,7 @@ public class CourseServlet extends HttpServlet {
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
             if (am == null){
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
             }
             String clubName = request.getParameter("cname");
             String courseName = request.getParameter("ccname");

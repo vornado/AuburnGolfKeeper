@@ -23,7 +23,7 @@ public class AdminServlet extends HttpServlet {
             }
             if (am.getAccountRoleId() == 1) {
                 request.setAttribute("errorMessage", "You do not have permission to see this page!");
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
             }
 
             MySQLdb db = MySQLdb.getInstance();
