@@ -18,6 +18,7 @@ public class CourseServlet extends HttpServlet {
             if (am == null){
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
+                return;
             }
             MySQLdb db = MySQLdb.getInstance();
               db.getAllCourses();

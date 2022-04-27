@@ -18,11 +18,12 @@ public class AdminServlet extends HttpServlet {
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
             if (am == null) {
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
+                return;
             }
             if (am.getAccountRoleId() == 1) {
                 request.setAttribute("errorMessage", "You do not have permission to see this page!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
 
             MySQLdb db = MySQLdb.getInstance();
@@ -32,12 +33,14 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
             }
             request.setAttribute("users", listAM);
+            request.setAttribute("errorMessage", "LOL");
             request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
+            return;
         }
         catch ( Exception ex){
             //Google's Nest Error Message! Easter Egg!
             request.setAttribute("errorMessage", "Something went wrong! Please Try Again in a few seconds!");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
         }
     }
 

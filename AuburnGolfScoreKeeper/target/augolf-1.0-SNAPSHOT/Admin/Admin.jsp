@@ -50,6 +50,7 @@
                 </div>
             </div>
         </div>
+        <div style="color: #FF0000;">${errorMessage}</div>
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -61,25 +62,26 @@
             </thead>
             <tbody>
             <tr>
-<%--                <td>Sira Toure</td>--%>
-<%--                <td>--%>
-<%--                    <select id="roleId" name="role">--%>
-<%--                        <option value="1">Basic</option>--%>
-<%--                        <option value="2">Moderator</option>--%>
-<%--                        <option value="3">Admin</option>--%>
-<%--                    </select>--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                    <select id="statusId" name="status">--%>
-<%--                        <option value="1">Pending</option>--%>
-<%--                        <option value="2">Denied</option>--%>
-<%--                        <option value="3">Approval</option>--%>
-<%--                    </select>--%>
-<%--                </td>--%>
-                <jsp:include page = "/Admin/AdminServlet"></jsp:include>
-                <c:forEach items="${requestScope.ListAM}" var="item" varStatus="status">
-
-                    Item <c:out value = "${item.getUserName()}"/><p>
+                <%--                <td>Sira Toure</td>--%>
+                <%--                <td>--%>
+                <%--                    <select id="roleId" name="role">--%>
+                <%--                        <option value="1">Basic</option>--%>
+                <%--                        <option value="2">Moderator</option>--%>
+                <%--                        <option value="3">Admin</option>--%>
+                <%--                    </select>--%>
+                <%--                </td>--%>
+                <%--                <td>--%>
+                <%--                    <select id="statusId" name="status">--%>
+                <%--                        <option value="1">Pending</option>--%>
+                <%--                        <option value="2">Denied</option>--%>
+                <%--                        <option value="3">Approval</option>--%>
+                <%--                    </select>--%>
+                <%--                </td>--%>
+                <form action="AdminServlet" method="get">
+                    <input type="submit" value="Get Users">
+                </form>
+                <c:forEach items="${requestScope.users}" var="item" varStatus="status">
+                <c:out value = "${item.getUserName()}"/><p>
                 </c:forEach>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
