@@ -11,17 +11,17 @@
 <h2>Auburn Golfkeeper Forgot Password Page</h2>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
-<form action="ForgotPassword/ForgotPasswordServlet" method="post">
+<form action="ForgotPasswordServlet" method="post">
 
     <div class="container">
         <label><b>Username</b></label>
         <input type="text" placeholder="Username" name="uname" required>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Password" name="psw" required>
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Email" name="email" required>
 
-        <label><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="psw" required>
+        <label><b>First Name</b></label>
+        <input type="text" placeholder="First Name" name="firstName" required>
         <button type="submit">Submit</button>
     </div>
 </form>
