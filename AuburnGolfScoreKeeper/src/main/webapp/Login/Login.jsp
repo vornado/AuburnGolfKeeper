@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Auburn Golf Score Keeper</title>
-    <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <body>
 <div class="w3-top">
@@ -13,9 +13,6 @@
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
         <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
-        <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
-        <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Admin</a>
     </div>
 
     <!-- Navbar on small screens -->
@@ -24,9 +21,6 @@
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Login</a>
         <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
-        <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
-        <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-padding-large">Admin</a>
     </div>
 </div>
 <h2>Auburn Golf Keeper Login Form</h2>

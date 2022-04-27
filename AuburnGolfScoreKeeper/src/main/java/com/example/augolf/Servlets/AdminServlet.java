@@ -33,7 +33,6 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
             }
             request.setAttribute("users", listAM);
-            request.setAttribute("errorMessage", "LOL");
             request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
             return;
         }
