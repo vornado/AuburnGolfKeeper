@@ -40,4 +40,12 @@
         <url-pattern>/Course/CourseServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/Admin/AdminServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

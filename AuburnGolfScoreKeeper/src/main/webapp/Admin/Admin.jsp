@@ -76,9 +76,10 @@
 <%--                        <option value="3">Approval</option>--%>
 <%--                    </select>--%>
 <%--                </td>--%>
-                <c:forEach var = "i" begin = "1" end = "5">
-                    Item <c:out value = "${i}"/><p>
-                    <c:out value="${sessionScope.name}"/>
+                <jsp:include page = "/Admin/AdminServlet"></jsp:include>
+                <c:forEach items="${requestScope.ListAM}" var="item" varStatus="status">
+
+                    Item <c:out value = "${item.getUserName()}"/><p>
                 </c:forEach>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
