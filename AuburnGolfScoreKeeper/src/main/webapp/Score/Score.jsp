@@ -37,11 +37,22 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 <form action="Score/ScoreServlet" method="post">
     <div class="container">
         <h1>ScoreCard </h1>
+<%--        https://css-tricks.com/dynamic-dropdowns/--%>
         <label><b>Course</b></label>
-        <input type="text" placeholder="Course" name="cname" required>
-
+        <br>
+        <select id="courseId" name="golfcourse">
+            <option value="-1" selected>None</option>
+<%--            <option value="0">Male</option>--%>
+<%--            <option value="1">Female</option>--%>
+        </select>
+        <br>
+        <br>
+        <br>
         <label><b>Score</b></label>
         <input type="text" placeholder="Score" name="ccname" required>
+        <br>
+        <br>
+        <br>
         <div class="center">
             <div class="form-input">
                 <div class="preview">
@@ -52,7 +63,9 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 
             </div>
         </div>
-
+        <br>
+        <br>
+        <br>
         <button type="submit">Submit</button>
     </div>
 </form>

@@ -48,8 +48,6 @@
                     <br>
                     <a href="../SignUp/SignUp.jsp" style="color:darkblue; text-decoration: none">New Account/ Register User</a>
                     <br>
-                    <a href="../Account/Wait.jsp" style="color:darkblue; text-decoration: none">Wait</a>
-                    <a href="../Account/Deny.jsp" style="color:darkblue; text-decoration: none">Deny</a>
             </span>
 
         </div>
