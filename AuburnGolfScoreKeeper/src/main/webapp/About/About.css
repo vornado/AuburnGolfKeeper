@@ -1400,3 +1400,8 @@ h1{
     text-align: center;
 
 }
+.container {
+    padding: 16px;
+    background-color: #eaeaea;
+    display: block;
+}
