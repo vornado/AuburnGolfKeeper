@@ -12,9 +12,10 @@ public class AccountModel implements Serializable {
     private int gender;
     private int accountStatusId;
     private int accountRoleId;
-    private int logoutStatus;
+    private int status;
 
-    public AccountModel(String firstName, String lastName, String userName, String email, int gender, int accountStatusId, int accountRoleId, int accountId, int logoutStatus) {
+    public AccountModel(int accountId, String firstName, String lastName, String userName, String email, int gender, int accountStatusId, int accountRoleId, int status) {
+        this.accountId = accountId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -22,12 +23,14 @@ public class AccountModel implements Serializable {
         this.gender = gender;
         this.accountStatusId = accountStatusId;
         this.accountRoleId = accountRoleId;
-        this.logoutStatus = logoutStatus;
+        this.status = status;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public int getAccountId() { return accountId; }
+
+    public void setAccountId(int accountId){ this.accountId = accountId; }
+
+    public String getFirstName() { return firstName; }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
