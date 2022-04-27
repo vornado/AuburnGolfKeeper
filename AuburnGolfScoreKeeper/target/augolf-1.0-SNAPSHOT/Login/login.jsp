@@ -46,7 +46,8 @@
                     <a href="../ForgotPassword/ForgotPassword.jsp" style="color:darkblue; text-decoration: none">Forgot password</a>
                     <br>
                     <a href="../SignUp/SignUp.jsp" style="color:darkblue; text-decoration: none">New Account/ Register User</a>
-                </span>
+                    <br>
+            </span>
 
         </div>
     </form>

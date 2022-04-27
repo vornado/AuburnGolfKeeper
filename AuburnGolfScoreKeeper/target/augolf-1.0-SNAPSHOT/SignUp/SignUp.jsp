@@ -73,6 +73,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 
 <script>
     const password = document.getElementById("Password")
+    const password = document.getElementById("Password")
         , confirm_password = document.getElementById("confirmPassword");
     function validatePassword(){
         if(password.value != confirm_password.value) {
