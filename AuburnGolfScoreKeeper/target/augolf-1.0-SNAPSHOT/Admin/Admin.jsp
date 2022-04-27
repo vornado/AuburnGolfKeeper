@@ -61,8 +61,20 @@
             <tbody>
             <tr>
                 <td>Sira Toure</td>
-                <td>Admin</td>
-                <td>Admin</td>
+                <td>
+                    <select id="roleId" name="role">
+                        <option value="0">Basic</option>
+                        <option value="1">Moderator</option>
+                        <option value="2">Admin</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="statusId" name="status">
+                        <option value="0">Pending</option>
+                        <option value="1">Denied</option>
+                        <option value="2">Admin</option>
+                    </select>
+                </td>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -86,8 +98,8 @@
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
                 '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+                '<td><select id="roleId" name="role"><option value="0">Basic</option> <option value="1">Moderator</option> <option value="2">Admin</option> </select></td>' +
+                '<td><select id="statusId" name="status"><option value="0">Pending</option><option value="1">Denied</option> <option value="2">Admin</option> </select></td>' +
                 '<td>' + actions + '</td>' +
                 '</tr>';
             $("table").append(row);

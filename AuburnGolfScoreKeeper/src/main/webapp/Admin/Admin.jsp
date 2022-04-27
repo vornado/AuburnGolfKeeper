@@ -21,7 +21,7 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="../Login/login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
-        <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
+        <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
@@ -32,7 +32,7 @@
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
         <a href="../index.jsp"class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
+        <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
@@ -61,8 +61,20 @@
             <tbody>
             <tr>
                 <td>Sira Toure</td>
-                <td>Admin</td>
-                <td>Admin</td>
+                <td>
+                    <select id="roleId" name="role">
+                        <option value="0">Basic</option>
+                        <option value="1">Moderator</option>
+                        <option value="2">Admin</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="statusId" name="status">
+                        <option value="0">Pending</option>
+                        <option value="1">Denied</option>
+                        <option value="2">Admin</option>
+                    </select>
+                </td>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -86,8 +98,8 @@
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
                 '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+                '<td><select id="roleId" name="role"><option value="0">Basic</option> <option value="1">Moderator</option> <option value="2">Admin</option> </select></td>' +
+                '<td><select id="statusId" name="status"><option value="0">Pending</option><option value="1">Denied</option> <option value="2">Admin</option> </select></td>' +
                 '<td>' + actions + '</td>' +
                 '</tr>';
             $("table").append(row);
