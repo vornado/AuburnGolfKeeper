@@ -77,7 +77,8 @@
 <%--                    </select>--%>
 <%--                </td>--%>
                 <c:forEach var = "i" begin = "1" end = "5">
-                Item <c:out value = "${i}"/><p>
+                    Item <c:out value = "${i}"/><p>
+                    <c:out value="${sessionScope.name}"/>
                 </c:forEach>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>

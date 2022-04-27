@@ -12,6 +12,22 @@ import java.io.IOException;
 @WebServlet(name = "CourseServlet", value = "/Course/CourseServlet")
 public class CourseServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try{
+            AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
+            if (am == null){
+                request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+            MySQLdb db = MySQLdb.getInstance();
+              db.getAllCourses();
+        }
+        catch (Exception ex){
+
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
