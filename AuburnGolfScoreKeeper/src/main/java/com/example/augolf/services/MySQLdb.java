@@ -313,14 +313,14 @@ public class MySQLdb {
             if (resultSet.next()) {
                 resultSet.close();
                 preparedStatement.close();
-                return true;
+                return false;
             } else {
                 resultSet.close();
                 preparedStatement.close();
-                return false;
+                return true;
             }
         } catch (Exception exception) {
-            return false;
+            return true;
         }
     }
 
@@ -422,7 +422,7 @@ public class MySQLdb {
                 buffer.append((char) randomLimitedInt);
             }
             String generatedString = buffer.toString();
-            String query = "Update user SET password= ?, lastModified=?, lastModifiedBy where username= ? AND email= ? AND firstName= ? AND isActive=?";
+            String query = "Update user SET password= ?, lastModified= ?, lastModifiedBy= ? where username= ? AND email= ? AND firstName= ? AND isActive=?";
             Date now = new Date();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, generatedString);

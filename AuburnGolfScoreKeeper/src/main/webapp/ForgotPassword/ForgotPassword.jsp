@@ -38,6 +38,8 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 
     <div class="container">
         <h1>Forgot Password</h1>
+        <div style="color: #FF0000;">${errorMessage}</div>
+        <div style="color: #000000;">${newPassword}</div>
         <label><b>Username</b></label>
         <input type="text" placeholder="Username" name="uname" required>
 

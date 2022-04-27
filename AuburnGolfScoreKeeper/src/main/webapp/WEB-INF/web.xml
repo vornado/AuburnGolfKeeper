@@ -19,7 +19,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/Login/RegisterServlet</url-pattern>
+        <url-pattern>/SignUp/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/ForgotPassword/ForgotPasswordServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

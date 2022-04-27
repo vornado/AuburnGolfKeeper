@@ -41,12 +41,9 @@
             <input type="password" placeholder="Password" name="psw" required class="login-form-field">
 
             <button type="submit" id="login-form-submit">Login</button>
-
-            <label><input type="checkbox"  name="remember"> Remember me</label>
         </div>
 
         <div class="container" >
-            <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw" >
                     <a href="../ForgotPassword/ForgotPassword.jsp" style="color:darkblue; text-decoration: none">Forgot password</a>
                     <br>

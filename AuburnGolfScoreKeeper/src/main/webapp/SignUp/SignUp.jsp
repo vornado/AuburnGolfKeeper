@@ -38,6 +38,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 
     <div class="container">
         <h1>Registration</h1>
+        <div style="color: #FF0000;">${errorMessage}</div>
         <label><b>Email</b></label>
         <input type="text" placeholder="Email" name="email" maxlength="45" required>
         <br>
@@ -45,10 +46,10 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
         <input type="text" placeholder="Username" name="uname" required>
 
         <label><b>Password</b></label>
-        <input type="password" placeholder="Password" name="psw" required>
+        <input type="password" id="password" placeholder="Password" name="psw" required>
 
         <label><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="psw" required>
+        <input type="password" id="confirmPassword"  placeholder="Confirm Password" name="psw" required>
         <label><b>Gender</b></label>
         <br>
         <select id="genderId" name="regGender">
@@ -69,3 +70,18 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 <br>
 </body>
 </html>
+
+<script>
+    const password = document.getElementById("Password")
+    const password = document.getElementById("Password")
+        , confirm_password = document.getElementById("confirmPassword");
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>

@@ -77,3 +77,26 @@ CREATE TABLE `augolfdb`.`user` (
     REFERENCES `augolfdb`.`courselookup` (`courseId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+use augolfdb;
+    
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Admin", "Auburn", "AUAdmin", "admin@agsk.com", "adminGolf", -1, 1, 3, 3, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userDenied", "userDenied@agsk.com", "userDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userPending", "userPending@agsk.com", "userPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userApproved", "userApproved@agsk.com", "userAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
