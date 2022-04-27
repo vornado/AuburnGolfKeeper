@@ -63,16 +63,16 @@
                 <td>Sira Toure</td>
                 <td>
                     <select id="roleId" name="role">
-                        <option value="0">Basic</option>
-                        <option value="1">Moderator</option>
-                        <option value="2">Admin</option>
+                        <option value="1">Basic</option>
+                        <option value="2">Moderator</option>
+                        <option value="3">Admin</option>
                     </select>
                 </td>
                 <td>
                     <select id="statusId" name="status">
-                        <option value="0">Pending</option>
-                        <option value="1">Denied</option>
-                        <option value="2">Admin</option>
+                        <option value="1">Pending</option>
+                        <option value="2">Denied</option>
+                        <option value="3">Approval</option>
                     </select>
                 </td>
                 <td>

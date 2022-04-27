@@ -13,7 +13,7 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="../Login/login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
-        <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
@@ -22,9 +22,9 @@
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-        <a href="../index.jsp"class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="../Login/login.jsp" class="w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">Registration</a>
         <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
         <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
@@ -34,18 +34,18 @@
 <h2>Auburn Golfkeeper Forgot Password Page</h2>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
-<form action="ForgotPassword/ForgotPasswordServlet" method="post">
+<form action="ForgotPasswordServlet" method="post">
 
     <div class="container">
         <h1>Forgot Password</h1>
         <label><b>Username</b></label>
         <input type="text" placeholder="Username" name="uname" required>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Password" name="psw" required>
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Email" name="email" required>
 
-        <label><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="psw" required>
+        <label><b>First Name</b></label>
+        <input type="text" placeholder="First Name" name="firstName" required>
         <button type="submit">Submit</button>
     </div>
 </form>
