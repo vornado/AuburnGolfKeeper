@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-8"><h2><b>Admin Details</b></h2></div>
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+<%--                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>--%>
                 </div>
             </div>
         </div>
@@ -77,17 +77,49 @@
                 <%--                        <option value="3">Approval</option>--%>
                 <%--                    </select>--%>
                 <%--                </td>--%>
-                <form action="AdminServlet" method="get">
-                    <input type="submit" value="Get Users">
-                </form>
-                <c:forEach items="${requestScope.users}" var="item" varStatus="status">
-                <c:out value = "${item.getUserName()}"/><p>
-                </c:forEach>
-                <td>
-                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                </td>
+<%--                <form action="AdminServlet" method="get">--%>
+<%--                    <input type="submit" value="Get Users">--%>
+<%--                </form>--%>
+<%--                <c:forEach items="${requestScope.users}" var="item" varStatus="status">--%>
+<%--                <c:out value = "${item.getUserName()}"/><p>--%>
+<%--                </c:forEach>--%>
+                    <form action="AdminServlet" method="get">
+                        <input type="submit" value="Get Users">
+                    </form>
+                    <c:forEach items="${requestScope.users}" var="item" varStatus="status">
+                    <td><c:out value = "${item.getUserName()}"/></td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${item.getAccountStatusId() == 1}">
+                                <c:out value = "${Basic}"/>
+                            </c:when>
+                            <c:when test="${item.getAccountStatusId() == 2}">
+                                <c:out value = "${Moderator}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <c:out value = "${Admin}"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${item.getAccountRoleId() == 1}">
+                                <c:out value = "${Pending}"/>
+                            </c:when>
+                            <c:when test="${item.getAccountRoleId() == 2}">
+                                <c:out value = "${Denied}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <c:out value = "${Approved}"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    </c:forEach>
+                    <td>
+                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    </td>
             </tr>
             </tbody>
         </table>
