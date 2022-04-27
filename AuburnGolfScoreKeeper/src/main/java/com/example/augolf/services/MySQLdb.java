@@ -452,6 +452,9 @@ public class MySQLdb {
 
     public boolean updateUserStatus(AccountModel am, int newStatus, AccountModel privUser){
        try{
+           if (privUser.getAccountRoleId() == 1){
+               return false;
+           }
            String query = "UPDATE user SET accountStatusId= ?, lastModified= ?, lastModifiedBy= ? WHERE userId= ? AND isActive= ?";
            PreparedStatement preparedStatement = connection.prepareStatement(query);
            preparedStatement.setInt(1, newStatus);
@@ -466,8 +469,14 @@ public class MySQLdb {
        }
     }
 
-    public boolean updateUserRole(AccountModel am, int newRole){
+    public boolean updateUserRole(AccountModel am, int newRole, AccountModel privUser){
         try{
+            if (newRole == 3 && privUser.getAccountRoleId() != 3){
+                return false;
+            }
+            if (newRole == 2 && privUser.getAccountRoleId() == 1){
+                return false;
+            }
             String query = "UPDATE user SET accountRoleId= ? WHERE userId= ? AND isActive= ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, newRole);
