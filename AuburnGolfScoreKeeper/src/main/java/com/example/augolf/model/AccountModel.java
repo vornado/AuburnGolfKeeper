@@ -83,4 +83,8 @@ public class AccountModel implements Serializable {
     public void setAccountRoleId(int accountRoleId) {
         this.accountRoleId = accountRoleId;
     }
+
+    public int getStatus() { return status; }
+
+    public void setStatus(int status ) { this.status = status; }
 }

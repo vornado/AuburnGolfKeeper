@@ -34,9 +34,11 @@
 <h2>Auburn GolfKeeper Course</h2>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
-<form action="Course/CourseServlet" method="post">
+<form action="CourseServlet" method="post">
     <div class="container">
         <h1>Course </h1>
+        <div style="color: #27C46B;">${successMessage}</div>
+        <div style="color: #FF0000;">${errorMessage}</div>
         <label><b>Club Name</b></label>
         <input type="text" placeholder="Club Name" name="cname" required>
 

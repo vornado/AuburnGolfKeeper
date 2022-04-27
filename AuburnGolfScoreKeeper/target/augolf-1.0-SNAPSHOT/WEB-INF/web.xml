@@ -31,4 +31,13 @@
         <url-pattern>/ForgotPassword/ForgotPasswordServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CourseServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.CourseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CourseServlet</servlet-name>
+        <url-pattern>/Course/CourseServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

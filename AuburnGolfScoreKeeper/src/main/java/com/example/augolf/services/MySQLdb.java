@@ -65,7 +65,8 @@ public class MySQLdb {
            String courseCity = resultSet.getString("courseCity");
            String courseState = resultSet.getString("courseState");
            String coursePar = resultSet.getString("coursePar");
-           return new CourseModel(courseId, clubName, courseName, courseCity, courseState, coursePar);
+           int locked = resultSet.getInt("locked");
+           return new CourseModel(courseId, clubName, courseName, courseCity, courseState, coursePar,locked);
         }catch (SQLException e){
             return null;
         }

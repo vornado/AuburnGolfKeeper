@@ -7,14 +7,16 @@ public class CourseModel {
     private String courseCity;
     private String courseState;
     private String coursePar;
+    private int locked;
 
-    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, String coursePar) {
+    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, String coursePar, int locked) {
         this.courseId = courseId;
         this.clubName = clubName;
         this.courseName = courseName;
         this.courseCity = courseCity;
         this.courseState = courseState;
         this.coursePar = coursePar;
+        this.locked = locked;
     }
 
     public int getCourseId() {
@@ -63,5 +65,13 @@ public class CourseModel {
 
     public void setCoursePar(String coursePar) {
         this.coursePar = coursePar;
+    }
+
+    public int getLocked(){
+        return locked;
+    }
+
+    public void setLocked(int locked){
+        this.locked = locked;
     }
 }
