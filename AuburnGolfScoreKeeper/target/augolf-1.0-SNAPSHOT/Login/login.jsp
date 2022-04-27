@@ -36,13 +36,9 @@
         <div class="container">
             <label><b>Username</b></label>
             <input class="login-form-field" type="text" placeholder="Username" name="uname" required>
-
             <label><b>Password</b></label>
             <input type="password" placeholder="Password" name="psw" required class="login-form-field">
-
             <button type="submit" id="login-form-submit">Login</button>
-
-            <label><input type="checkbox"  name="remember"> Remember me</label>
         </div>
 
         <div class="container" >
@@ -51,7 +47,10 @@
                     <a href="../ForgotPassword/ForgotPassword.jsp" style="color:darkblue; text-decoration: none">Forgot password</a>
                     <br>
                     <a href="../SignUp/SignUp.jsp" style="color:darkblue; text-decoration: none">New Account/ Register User</a>
-                </span>
+                    <br>
+                    <a href="../Account/Wait.jsp" style="color:darkblue; text-decoration: none">Wait</a>
+                    <a href="../Account/Deny.jsp" style="color:darkblue; text-decoration: none">Deny</a>
+            </span>
 
         </div>
     </form>
