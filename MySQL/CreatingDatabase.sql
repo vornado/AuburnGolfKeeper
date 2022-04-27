@@ -9,8 +9,8 @@ CREATE TABLE `augolfdb`.`user` (
   `userName` VARCHAR(50) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
-  `gender` TINYINT(1) NOT NULL,
-  `isActive` TINYINT(1) NOT NULL,
+  `gender` TINYINT NOT NULL,
+  `isActive` TINYINT NOT NULL,
   `accountStatusId` INT NOT NULL,
   `accountRoleId` INT NOT NULL,
   `createdDate` DATETIME NOT NULL,
@@ -28,9 +28,11 @@ CREATE TABLE `augolfdb`.`user` (
   `courseCity` VARCHAR(45) NOT NULL,
   `courseState` VARCHAR(45) NOT NULL,
   `coursePar` VARCHAR(18) NOT NULL,
+  `locked` TINYINT NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `lastModified` DATETIME NOT NULL,
   `lastModifiedBy` VARCHAR(50) NOT NULL,
+  `isActive` TINYINT NOT NULL,
   PRIMARY KEY (`courseId`),
   UNIQUE INDEX `courseId_UNIQUE` (`courseId` ASC) VISIBLE);
   
@@ -38,12 +40,29 @@ CREATE TABLE `augolfdb`.`user` (
   `scorecardId` INT NOT NULL AUTO_INCREMENT,
   `userId` INT NOT NULL,
   `courseId` INT NOT NULL,
-  `score` INT NOT NULL,
-  `locked` TINYINT(1) NOT NULL,
+  `scoreHole1` INT NOT NULL,
+  `scoreHole2` INT NOT NULL, 
+  `scoreHole3` INT NOT NULL, 
+  `scoreHole4` INT NOT NULL, 
+  `scoreHole5` INT NOT NULL, 
+  `scoreHole6` INT NOT NULL, 
+  `scoreHole7` INT NOT NULL, 
+  `scoreHole8` INT NOT NULL, 
+  `scoreHole9` INT NOT NULL, 
+  `scoreHole10` INT NULL,
+  `scoreHole11` INT NULL,
+  `scoreHole12` INT NULL, 
+  `scoreHole13` INT NULL, 
+  `scoreHole14` INT NULL, 
+  `scoreHole15` INT NULL, 
+  `scoreHole16` INT NULL, 
+  `scoreHole17` INT NULL, 
+  `scoreHole18` INT NULL, 
   `picture` BLOB NULL,
   `createdDate` DATETIME NULL,
   `lastModified` DATETIME NULL,
   `lastModifiedBy` VARCHAR(50) NOT NULL,
+  `isActive` TINYINT NOT NULL,
   PRIMARY KEY (`scorecardId`),
   UNIQUE INDEX `scorecardId_UNIQUE` (`scorecardId` ASC) VISIBLE,
   INDEX `userIdFK_idx` (`userId` ASC) VISIBLE,
@@ -58,3 +77,26 @@ CREATE TABLE `augolfdb`.`user` (
     REFERENCES `augolfdb`.`courselookup` (`courseId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+use augolfdb;
+    
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Admin", "Auburn", "AUAdmin", "admin@agsk.com", "adminGolf", -1, 1, 3, 3, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userDenied", "userDenied@agsk.com", "userDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userPending", "userPending@agsk.com", "userPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("User", "Auburn", "userApproved", "userApproved@agsk.com", "userAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
+
+INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
+values ("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");

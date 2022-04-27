@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "RegisterServlet", value = "/Login/RegisterServlet")
+@WebServlet(name = "RegisterServlet", value = "/SignUp/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,24 +20,24 @@ public class RegisterServlet extends HttpServlet {
             String firstName = request.getParameter("regFirstName");
             String lastName = request.getParameter("regLastName");
             Integer gender = Integer.parseInt(request.getParameter("regGender"));
-            String email = request.getParameter("regEmail");
+            String email = request.getParameter("email");
 
             if (username.length() <= 4){
                 //throw an error
-                request.setAttribute("errorMessageUsername", "The username provided is not valid. Please enter a valid username.");
-                request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                request.setAttribute("errorMessage", "The username provided is not valid. Please enter a valid username.");
+                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
             }
 
             if (password.length() <= 4){
                 //throw an error
-                request.setAttribute("errorMessagePassword", "The password provided is not valid. Please enter a valid password.");
-                request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                request.setAttribute("errorMessage", "The password provided is not valid. Please enter a valid password.");
+                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
             }
 
             if (email.indexOf('@') == -1){
                 //throw error since not address is wrong
-                request.setAttribute("errorMessageEmail", "The email provided is not valid. Please enter a valid email.");
-                request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                request.setAttribute("errorMessage", "The email provided is not valid. Please enter a valid email.");
+                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
             }
 
             try{
@@ -46,8 +46,8 @@ public class RegisterServlet extends HttpServlet {
                 rm = new RegisterModel(username, password, firstName, lastName, email, gender);
                 if (db.checkUsernameValid(rm.getUsername())){
                     if (!db.checkEmailValid(rm.getEmail())){
-                        request.setAttribute("errorMessageEmail", "The email provided is already in use. Please Login");
-                        request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                        request.setAttribute("errorMessage", "The email provided is already in use. Please Login");
+                        request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
                     }
 
                     if (db.registerUser(rm)){
@@ -57,24 +57,24 @@ public class RegisterServlet extends HttpServlet {
                     else{
                         // Failed to create account
                         request.setAttribute("errorMessage", "Failed to create your account. Please try again later.");
-                        request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                        request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
                     }
                 }
                 else{
                     //Username is not valid send an error
-                    request.setAttribute("errorMessageUsername", "The username provided is already in use by another account. Please try another username.");
-                    request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                    request.setAttribute("errorMessage", "The username provided is already in use by another account. Please try another username.");
+                    request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
                 }
             }
             catch (Exception ex){
                 request.setAttribute("errorMessage", "Failed to create your account. Please try again later.");
-                request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
             }
         }
         catch (Exception exception){
             //Send error back
             request.setAttribute("errorMessage", "Failed to create your account. Please try again later.");
-            request.getRequestDispatcher("/Login/Signup.jsp").forward(request, response);
+            request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
         }
 
     }

@@ -42,7 +42,6 @@
         </div>
 
         <div class="container" >
-            <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw" >
                     <a href="../ForgotPassword/ForgotPassword.jsp" style="color:darkblue; text-decoration: none">Forgot password</a>
                     <br>
