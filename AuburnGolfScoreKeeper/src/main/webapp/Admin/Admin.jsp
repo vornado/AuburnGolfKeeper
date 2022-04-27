@@ -1,5 +1,6 @@
 <%--https://webdesignerwall.com/wdw-snippet/table-with-add-and-delete-and-edit-actions--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-8"><h2>Admin <b>Details</b></h2></div>
+                <div class="col-sm-8"><h2><b>Admin Details</b></h2></div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                 </div>
@@ -60,21 +61,25 @@
             </thead>
             <tbody>
             <tr>
-                <td>Sira Toure</td>
-                <td>
-                    <select id="roleId" name="role">
-                        <option value="1">Basic</option>
-                        <option value="2">Moderator</option>
-                        <option value="3">Admin</option>
-                    </select>
-                </td>
-                <td>
-                    <select id="statusId" name="status">
-                        <option value="1">Pending</option>
-                        <option value="2">Denied</option>
-                        <option value="3">Approval</option>
-                    </select>
-                </td>
+<%--                <td>Sira Toure</td>--%>
+<%--                <td>--%>
+<%--                    <select id="roleId" name="role">--%>
+<%--                        <option value="1">Basic</option>--%>
+<%--                        <option value="2">Moderator</option>--%>
+<%--                        <option value="3">Admin</option>--%>
+<%--                    </select>--%>
+<%--                </td>--%>
+<%--                <td>--%>
+<%--                    <select id="statusId" name="status">--%>
+<%--                        <option value="1">Pending</option>--%>
+<%--                        <option value="2">Denied</option>--%>
+<%--                        <option value="3">Approval</option>--%>
+<%--                    </select>--%>
+<%--                </td>--%>
+                <c:forEach var = "i" begin = "1" end = "5">
+                    Item <c:out value = "${i}"/><p>
+                    <c:out value="${sessionScope.name}"/>
+                </c:forEach>
                 <td>
                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
