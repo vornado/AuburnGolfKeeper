@@ -1,16 +1,3 @@
-/*span.infoText{*/
-/*    display: block;*/
-/*}*/
-/*body,h1,h2,h3,h4,h5,h6 {*/
-/*    font-family: "Lato", sans-serif*/
-/*}*/
-/*.w3-bar,h1,button {*/
-/*    font-family: "Montserrat", sans-serif*/
-/*}*/
-/*.fa-anchor,.fa-coffee {*/
-/*    font-size:200px*/
-/*}*/
-
 /*https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_start_page&stacked=h*/
 /*https://www.w3schools.com/w3css/4/w3.css*/
 html{
@@ -1395,4 +1382,7 @@ a{
 }
 .w3-border-pale-blue,.w3-hover-border-pale-blue:hover{
     border-color:#e7ffff!important
+}
+.fa-anchor,.fa-coffee {
+    font-size:200px
 }

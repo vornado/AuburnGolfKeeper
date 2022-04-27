@@ -1,4 +1,4 @@
-<%--https://www.codemag.com/article/1511031/CRUD-in-HTML-JavaScript-and-jQuery--%>
+<%--https://webdesignerwall.com/wdw-snippet/table-with-add-and-delete-and-edit-actions--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>

@@ -28,9 +28,9 @@
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="Login/login.jsp" class="w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
-        <a href="Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
-        <a href="Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
+        <a href="/About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
     </div>
 </div>
 <!-- Header -->
