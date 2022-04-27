@@ -61,66 +61,45 @@
             </tr>
             </thead>
             <tbody>
+            <form action="AdminServlet" method="get">
+                <input type="submit" value="Get Users">
+            </form>
+            <c:forEach items="${requestScope.users}" var="item" varStatus="status">
             <tr>
-                <%--                <td>Sira Toure</td>--%>
-                <%--                <td>--%>
-                <%--                    <select id="roleId" name="role">--%>
-                <%--                        <option value="1">Basic</option>--%>
-                <%--                        <option value="2">Moderator</option>--%>
-                <%--                        <option value="3">Admin</option>--%>
-                <%--                    </select>--%>
-                <%--                </td>--%>
-                <%--                <td>--%>
-                <%--                    <select id="statusId" name="status">--%>
-                <%--                        <option value="1">Pending</option>--%>
-                <%--                        <option value="2">Denied</option>--%>
-                <%--                        <option value="3">Approval</option>--%>
-                <%--                    </select>--%>
-                <%--                </td>--%>
-<%--                <form action="AdminServlet" method="get">--%>
-<%--                    <input type="submit" value="Get Users">--%>
-<%--                </form>--%>
-<%--                <c:forEach items="${requestScope.users}" var="item" varStatus="status">--%>
-<%--                <c:out value = "${item.getUserName()}"/><p>--%>
-<%--                </c:forEach>--%>
-                    <form action="AdminServlet" method="get">
-                        <input type="submit" value="Get Users">
-                    </form>
-                    <c:forEach items="${requestScope.users}" var="item" varStatus="status">
                     <td><c:out value = "${item.getUserName()}"/></td>
                     <td>
                         <c:choose>
                             <c:when test="${item.getAccountStatusId() == 1}">
-                                <c:out value = "${Basic}"/>
+                                <c:out value = "Basic"/>
                             </c:when>
                             <c:when test="${item.getAccountStatusId() == 2}">
-                                <c:out value = "${Moderator}"/>
+                                <c:out value = "Moderator"/>
                             </c:when>
                             <c:otherwise>
-                                <c:out value = "${Admin}"/>
+                                <c:out value = "Admin"/>
                             </c:otherwise>
                         </c:choose>
                     </td>
                     <td>
                         <c:choose>
                             <c:when test="${item.getAccountRoleId() == 1}">
-                                <c:out value = "${Pending}"/>
+                                <c:out value = "Pending"/>
                             </c:when>
                             <c:when test="${item.getAccountRoleId() == 2}">
-                                <c:out value = "${Denied}"/>
+                                <c:out value = "Denied"/>
                             </c:when>
                             <c:otherwise>
-                                <c:out value = "${Approved}"/>
+                                <c:out value = "Approved"/>
                             </c:otherwise>
                         </c:choose>
                     </td>
-                    </c:forEach>
                     <td>
                         <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                         <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                     </td>
             </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
@@ -168,9 +147,17 @@
             }
         });
         // Edit row on edit button click
+        var rId = document.getElementById("roleId");
+        var rUser = rId.value;
+        var rUserValue =rId.options[rId.selectedIndex].text;
+        var sId = document.getElementById("statusId");
+        var sUser = sId.value;
+        var sUserValue =sId.options[sId.selectedIndex].text;
         $(document).on("click", ".edit", function(){
             $(this).parents("tr").find("td:not(:last-child)").each(function(){
                 $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">'); //change SAT
+                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">'); //changes SAT
             });
             $(this).parents("tr").find(".add, .edit").toggle();
             $(".add-new").attr("disabled", "disabled");
