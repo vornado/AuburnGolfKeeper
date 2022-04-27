@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Auburn Golf Keeper</title>
-    <link type='text/css' rel='stylesheet' href='About.css'/>
+    <link type='text/css' rel='stylesheet' href='Score.css'/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
 
 </head>
@@ -14,8 +14,8 @@
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="../Login/login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
         <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
+        <a href="../" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
         <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Admin</a>
     </div>
@@ -25,18 +25,47 @@
         <a href="../index.jsp"class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="../Login/login.jsp" class="w3-bar-item w3-button w3-padding-large">Login</a>
         <a href="../Login/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
+        <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
         <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
         <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-padding-large">Admin</a>
     </div>
 </div>
-<br>
-<div class="container" >
-    <h1>About Us </h1>
-    <p style="display: block; text-align: justify-all; margin-left: 25%; margin-right: 25%;" > Our organization is a platform for golfers by golfers. We wanted to create a platform that allows golfers to keep track of all their scores at any course they have played. We included golf handicaps in the scoring too. We created this platform to help make life easier for the golfers to keep track of their scores and have fun doing it. </p>
-    <br>
-</div>
+<h2>Auburn GolfKeeper Score Card</h2>
+<%--PHP Login Form: Guide to Create a Login Form in PHP
+https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
+<form action="Score/ScoreServlet" method="post">
+    <div class="container">
+        <h1>ScoreCard </h1>
+        <label><b>Course</b></label>
+        <input type="text" placeholder="Course" name="cname" required>
 
+        <label><b>Score</b></label>
+        <input type="text" placeholder="Score" name="ccname" required>
+        <div class="center">
+            <div class="form-input">
+                <div class="preview">
+                    <img id="file-ip-1-preview">
+                </div>
+                <label for="file-ip-1">Upload Image</label>
+                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </div>
+</form>
+<br>
+<script type="text/javascript">
+    function showPreview(event){
+        if(event.target.files.length > 0){
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-1-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+</script>
 </body>
 </html>

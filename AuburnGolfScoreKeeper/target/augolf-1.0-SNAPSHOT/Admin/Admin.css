@@ -1387,169 +1387,90 @@ a{
     font-size:200px
 }
 
-/*Login Box*/
+/*Admin */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    color: #404E67;
+    background: #F5F7FA;
+    font-family: 'Open Sans', sans-serif;
 }
 h2{
     text-align: center;
-    color: darkblue;
 }
-form {
-    border: 3px solid darkblue;
-    margin: auto;
-    width: 50%;
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
 }
-
-button {
-    background-color: #ff5d00;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
 }
-
-button:hover {
-    opacity: 0.8;
-}
-
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: darkblue;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
-    background-color: #eaeaea;
-}
-
-span.psw {
+.table-title .add-new {
     float: right;
-    padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
-        width: 100%;
-    }
-}
-#login-error-msg-holder {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-}
-
-#login-error-msg {
-    width: 23%;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
+    height: 30px;
+    font-weight: bold;
     font-size: 12px;
-    font-weight: bold;
-    color: #8a0000;
-    border: 1px solid #8a0000;
-    background-color: #e58f8f;
-    opacity: 0;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
 }
-
-#error-msg-second-line {
-    display: block;
+.table-title .add-new i {
+    margin-right: 4px;
 }
-
-#login-form {
-    align-self: flex-start;
-    display: grid;
-    justify-items: center;
-    align-items: center;
+table.table {
+    table-layout: fixed;
 }
-
-.login-form-field::placeholder {
-    color: #3a3a3a;
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
 }
-
-.login-form-field {
-    border: none;
-    border-bottom: 1px solid #3a3a3a;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    outline: none;
-    padding: 0px 0px 5px 5px;
-}
-
-#login-form-submit {
-    width: 100%;
-    padding: 7px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    background-color: #ff5d00;
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
     cursor: pointer;
-    outline: none;
 }
-/*loginStyle.css*/
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+table.table th:last-child {
+    width: 100px;
 }
-
-/* Style the buttons inside the tab */
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
+table.table td a {
     cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
 }
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ddd;
+table.table td a.add {
+    color: #27C46B;
 }
-
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
+table.table td a.edit {
+    color: #FFC107;
 }
-
-/* Style the tab content */
-.tabcontent {
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
