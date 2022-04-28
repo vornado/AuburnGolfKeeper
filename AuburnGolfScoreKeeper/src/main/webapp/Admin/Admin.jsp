@@ -165,9 +165,9 @@
                                     </c:choose>
                                 </td>
                                 <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                    <input class="add"  type="submit" title="Submit" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></input>
                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+<%--                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>--%>
                                 </td>
                         </tr>
                         </c:forEach>
@@ -176,14 +176,12 @@
             </table>
             <br>
             <br>
-            <div class="container">
-                <button type="submit" style="  text-align: center;  background-color: #051160; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px; width: 55%; height: 55%;">Submit </button>
-            </div>
+<%--            <div class="container">--%>
+<%--                <button type="submit" style="  text-align: center;  background-color: #051160; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px; width: 55%; height: 55%;">Submit </button>--%>
+<%--            </div>--%>
             <br>
             <br>
         </form>
-<%--        <button type="submit" id="login-form-submit" onclick="AccessCheck()">Submit</button>--%>
-
 
     </div>
 </div>
