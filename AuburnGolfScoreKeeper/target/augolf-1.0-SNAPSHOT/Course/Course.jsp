@@ -21,6 +21,11 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
         <label><b>Club Course Name</b></label>
         <input type="text" placeholder="Club Course Name" name="ccname" required>
 
+        <label><b>Location City</b></label>
+        <input type="text" placeholder="Location City" name="LCname" required>
+
+        <label><b>Location State</b></label>
+        <input type="text" placeholder="Location State" name="LSname" required>
         <label><b>Par</b></label>
         <table>
             <tr>

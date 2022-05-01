@@ -39,7 +39,7 @@ public class CourseServlet extends HttpServlet {
             }
             String clubName = request.getParameter("cname");
             String courseName = request.getParameter("ccname");
-            String[] par = request.getParameterValues("par");
+            String[] par = request.getParameterValues("parName");
             String city = request.getParameter("LCname");
             String state = request.getParameter("LSname");
 

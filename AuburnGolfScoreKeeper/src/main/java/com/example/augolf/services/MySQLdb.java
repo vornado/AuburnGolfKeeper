@@ -154,6 +154,26 @@ public class MySQLdb {
         }
     }
 
+    public ArrayList<ScoreCardModel> getAllUser(AccountModel am){
+        try{
+            String query = "SELECT * FROM scorecardlookup where userId= ? AND isActive= ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, am.getAccountId());
+            preparedStatement.setInt(2, 1);
+            ArrayList<ScoreCardModel> scm = new ArrayList<>();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                scm.add(loadScoreCard(resultSet));
+            }
+            resultSet.close();
+            preparedStatement.close();
+            return scm;
+        }
+        catch (Exception ex){
+            return null;
+        }
+    }
+
     public AccountModel getUserById(Integer userId) {
         try {
             //Lock Table maybe
@@ -380,8 +400,12 @@ public class MySQLdb {
 
     public boolean addCourse(CourseModel cm, AccountModel am) {
         try {
-            String query = "INSERT INTO courselookup (clubName, courseName, courseCity, courseState, scoreHole, createdDate, lockedCourse, lastModified, lastModifiedBy, isActive) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO courselookup (clubName, courseName, courseCity, courseState, " +
+                    "scoreHole1, scoreHole2, scoreHole3, scoreHole4, scoreHole5, scoreHole6, scoreHole7, scoreHole8, " +
+                    "scoreHole9, scoreHole10, scoreHole11, scoreHole12, scoreHole13, scoreHole14, scoreHole15, " +
+                    "scoreHole16, scoreHole17, scoreHole18, " +
+                    "createdDate, lockedCourse, lastModified, lastModifiedBy, isActive) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cm.getClubName());
@@ -390,19 +414,20 @@ public class MySQLdb {
             preparedStatement.setString(4, cm.getCourseState());
             ArrayList<Integer> par = cm.getCoursePar();
             Iterator<Integer> iter = par.iterator();
-            int index =0;
+            int index = 5;
             while (iter.hasNext()){
-                preparedStatement.setInt(5+index, iter.next());
+                preparedStatement.setInt(index, iter.next());
                 index++;
             }
             while (index != 23){
-                preparedStatement.setNull(indexmysqi);
+                preparedStatement.setNull(index, Types.INTEGER);
+                index++;
             }
-            preparedStatement.setInt(23,cm.getLocked());
-            preparedStatement.setString(24, currentTime);
-            preparedStatement.setString(25, currentTime);
-            preparedStatement.setString(26, am.getUserName());
-            preparedStatement.setInt(27, 1);
+            preparedStatement.setInt(index,cm.getLocked());
+            preparedStatement.setString(index, currentTime);
+            preparedStatement.setString(index, currentTime);
+            preparedStatement.setString(index, am.getUserName());
+            preparedStatement.setInt(index, 1);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet == 1;
         } catch (SQLException ex) {
