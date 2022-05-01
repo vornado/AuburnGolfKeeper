@@ -52,7 +52,8 @@ public class AdminServlet extends HttpServlet {
             int userStatusId = Integer.parseInt(request.getParameter("userStatusId"));
 
             if (am.getAccountRoleId() == 1){
-               //ToDo return access denied
+                request.getRequestDispatcher("../Account/Unauthroized.jsp").forward(request, response);
+                return;
             }
 
             MySQLdb db = MySQLdb.getInstance();
@@ -65,7 +66,7 @@ public class AdminServlet extends HttpServlet {
                     doGet(request, response);
                 }
                 else{
-                    request.setAttribute("successMessage", "User's Status has been successfully update.");
+                    request.setAttribute("successMessage", "User's Status and Role has been successfully update.");
                     doGet(request, response);
                 }
             }
@@ -76,7 +77,7 @@ public class AdminServlet extends HttpServlet {
                     doGet(request, response);
                 }
                 else{
-                    request.setAttribute("successMessage", "User's Status has been successfully update.");
+                    request.setAttribute("successMessage", "User's Role has been successfully update.");
                     doGet(request, response);
                 }
             }
@@ -84,7 +85,7 @@ public class AdminServlet extends HttpServlet {
                 user.setAccountStatusId(userStatusId);
                 if (!db.updateUserStatus(user,am)){
                     request.setAttribute("errorMessage", "Unable to update user's stauts");
-                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
+                    doGet(request, response);
                 }
                 else{
                     request.setAttribute("successMessage", "User's Status has been successfully update.");
@@ -92,11 +93,13 @@ public class AdminServlet extends HttpServlet {
                 }
             }
             else{
-                //ToDo report a failure
+                request.setAttribute("errorMessage", "Unable to update user's stauts");
+                doGet(request, response);
             }
         }
         catch(Exception ex){
-
+            request.setAttribute("errorMessage", "Unable to update user's stauts");
+            doGet(request, response);
         }
     }
 }
