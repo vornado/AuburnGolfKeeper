@@ -72,7 +72,7 @@ public class MySQLdb {
                 par.add(resultSet.getInt("scoreHole" + index));
             }
             int locked = resultSet.getInt("locked");
-            return new CourseModel(courseId, clubName, courseName, courseCity, courseState, par, locked);
+            return new CourseModel(courseId, clubName, courseName, courseCity, courseState, par);
         } catch (SQLException e) {
             return null;
         }
@@ -404,8 +404,8 @@ public class MySQLdb {
                     "scoreHole1, scoreHole2, scoreHole3, scoreHole4, scoreHole5, scoreHole6, scoreHole7, scoreHole8, " +
                     "scoreHole9, scoreHole10, scoreHole11, scoreHole12, scoreHole13, scoreHole14, scoreHole15, " +
                     "scoreHole16, scoreHole17, scoreHole18, " +
-                    "createdDate, lockedCourse, lastModified, lastModifiedBy, isActive) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "createdDate, lastModified, lastModifiedBy, isActive) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cm.getClubName());
@@ -423,11 +423,10 @@ public class MySQLdb {
                 preparedStatement.setNull(index, Types.INTEGER);
                 index++;
             }
-            preparedStatement.setInt(index,cm.getLocked());
-            preparedStatement.setString(index, currentTime);
-            preparedStatement.setString(index, currentTime);
-            preparedStatement.setString(index, am.getUserName());
-            preparedStatement.setInt(index, 1);
+            preparedStatement.setString(index++, currentTime);
+            preparedStatement.setString(index++, currentTime);
+            preparedStatement.setString(index++, am.getUserName());
+            preparedStatement.setInt(index++, 1);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet == 1;
         } catch (SQLException ex) {
