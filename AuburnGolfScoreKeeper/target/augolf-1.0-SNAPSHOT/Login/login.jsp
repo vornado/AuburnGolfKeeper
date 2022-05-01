@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <body>
+<br>
 <jsp:include page="../Header/Header.jsp" />
     <form action="LoginServlet" method="POST">
         <div class="container">

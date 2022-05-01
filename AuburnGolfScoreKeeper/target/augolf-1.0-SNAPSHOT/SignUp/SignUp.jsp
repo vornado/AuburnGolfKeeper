@@ -5,6 +5,7 @@
     <title>Auburn Golf Keeper</title>
 </head>
 <body>
+<br>
 <jsp:include page="../Header/Header.jsp" />
 <form action="RegisterServlet" method="POST">
     <div class="container">
