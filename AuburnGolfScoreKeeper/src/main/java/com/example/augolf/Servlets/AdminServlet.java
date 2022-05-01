@@ -61,30 +61,29 @@ public class AdminServlet extends HttpServlet {
                 user.setAccountRoleId(userRoleId);
                 user.setAccountStatusId(userStatusId);
                 if (!db.updateUser(user, am)){
-                    request.setAttribute("errorMessage", "Username or Password is invalid.");
-                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
-                    //ToDo send a message when it works
+                    request.setAttribute("errorMessage", "Unable to update user's status and role");
+                    doGet(request, response);
                 }
                 else{
-                    request.setAttribute("successMessage", "User's Status and Role has been successfully update.");
-                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request,response);
+                    request.setAttribute("successMessage", "User's Status has been successfully update.");
+                    doGet(request, response);
                 }
             }
             else if (user.getAccountRoleId() != userRoleId){
                 user.setAccountRoleId(userRoleId);
                 if (!db.updateUserRole(user,am)){
-                    request.setAttribute("errorMessage", "Username or Password is invalid.");
-                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
+                    request.setAttribute("errorMessage", "Unable to update user's role");
+                    doGet(request, response);
                 }
                 else{
-                    request.setAttribute("successMessage", "User's Role has been successfully update.");
-                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request,response);
+                    request.setAttribute("successMessage", "User's Status has been successfully update.");
+                    doGet(request, response);
                 }
             }
             else if (user.getAccountStatusId() != userStatusId){
                 user.setAccountStatusId(userStatusId);
                 if (!db.updateUserStatus(user,am)){
-                    request.setAttribute("errorMessage", "Username or Password is invalid.");
+                    request.setAttribute("errorMessage", "Unable to update user's stauts");
                     request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
                 }
                 else{
