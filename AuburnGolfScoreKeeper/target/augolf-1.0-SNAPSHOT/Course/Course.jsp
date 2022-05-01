@@ -35,7 +35,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
             </tr>
             <tr>
                 <c:forEach var="index" begin="1" end="3">
-                    <td><input type="number" name="parName"></td>
+                    <td><input type="number" name="parName" required ></td>
                 </c:forEach>
             </tr>
             <tr>
@@ -45,7 +45,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
             </tr>
             <tr>
                 <c:forEach var="index" begin="4" end="6">
-                    <td><input type="number" name="parName"></td>
+                    <td><input type="number" name="parName" required></td>
                 </c:forEach>
             </tr>
             <tr>
@@ -55,7 +55,7 @@ https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
             </tr>
             <tr>
                 <c:forEach var="index" begin="7" end="9">
-                    <td><input type="number" name="parName"></td>
+                    <td><input type="number" name="parName" required></td>
                 </c:forEach>
             </tr>
             <tr>
