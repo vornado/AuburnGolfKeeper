@@ -7,7 +7,10 @@
     <title>Auburn Golf Score Keeper</title>
 </head>
 <body>
-<jsp:include page="../Header/Header.jsp"/>
+<div class="w3-top">
+    <jsp:include page="../Header/Header.jsp"/>
+</div>
+<br>
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title" style="text-align: center;">

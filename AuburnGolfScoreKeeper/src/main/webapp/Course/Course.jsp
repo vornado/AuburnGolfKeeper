@@ -5,6 +5,7 @@
     <title>Auburn Golf Keeper</title>
 </head>
 <body>
+<br>
 <jsp:include page="../Header/Header.jsp" />
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>

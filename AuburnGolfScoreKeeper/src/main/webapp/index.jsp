@@ -4,11 +4,15 @@
 <head>
     <title>AU Golf Score Keeper</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <!-- Navbar -->
+<div class="w3-top">
 <jsp:include page="Header/Header.jsp"/>
+</div>
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-jumbo" style="color: white">Auburn Golf Score Keeper</h1>
