@@ -16,6 +16,8 @@ import java.util.Random;
 
 import com.mysql.cj.jdbc.Blob;
 
+import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
+
 public class MySQLdb {
     String dbConnectionString = "jdbc:mysql://localhost:3306/augolfdb";
     String dbuser = "root";
@@ -65,9 +67,12 @@ public class MySQLdb {
             String courseName = resultSet.getString("courseName");
             String courseCity = resultSet.getString("courseCity");
             String courseState = resultSet.getString("courseState");
-            String coursePar = resultSet.getString("coursePar");
+            ArrayList<Integer> par = new ArrayList<Integer>();
+            for (int index = 1; index != 19; index++) {
+                par.add(resultSet.getInt("scoreHole" + index));
+            }
             int locked = resultSet.getInt("locked");
-            return new CourseModel(courseId, clubName, courseName, courseCity, courseState, coursePar, locked);
+            return new CourseModel(courseId, clubName, courseName, courseCity, courseState, par, locked);
         } catch (SQLException e) {
             return null;
         }
@@ -375,19 +380,29 @@ public class MySQLdb {
 
     public boolean addCourse(CourseModel cm, AccountModel am) {
         try {
-            String query = "INSERT INTO courselookup (clubName, courseName, courseCity, courseState, coursePar, createdDate, lastModified, lastModifiedBy, isActive) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO courselookup (clubName, courseName, courseCity, courseState, scoreHole, createdDate, lockedCourse, lastModified, lastModifiedBy, isActive) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cm.getClubName());
             preparedStatement.setString(2, cm.getCourseName());
             preparedStatement.setString(3, cm.getCourseCity());
             preparedStatement.setString(4, cm.getCourseState());
-            preparedStatement.setString(5, cm.getCoursePar());
-            preparedStatement.setString(6, currentTime);
-            preparedStatement.setString(7, currentTime);
-            preparedStatement.setString(8, am.getUserName());
-            preparedStatement.setInt(9, 1);
+            ArrayList<Integer> par = cm.getCoursePar();
+            Iterator<Integer> iter = par.iterator();
+            int index =0;
+            while (iter.hasNext()){
+                preparedStatement.setInt(5+index, iter.next());
+                index++;
+            }
+            while (index != 23){
+                preparedStatement.setNull(indexmysqi);
+            }
+            preparedStatement.setInt(23,cm.getLocked());
+            preparedStatement.setString(24, currentTime);
+            preparedStatement.setString(25, currentTime);
+            preparedStatement.setString(26, am.getUserName());
+            preparedStatement.setInt(27, 1);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet == 1;
         } catch (SQLException ex) {
@@ -398,7 +413,7 @@ public class MySQLdb {
     public boolean addScoreCard(ScoreCardModel scm, CourseModel cm, AccountModel am) {
         try {
             String query = "INSERT INTO scorecardlookup (userId, courseId, score, locked, picture, createdDate, lastModified, lastModifiedBy, isActive) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?<?<?<?)";
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, am.getAccountId());

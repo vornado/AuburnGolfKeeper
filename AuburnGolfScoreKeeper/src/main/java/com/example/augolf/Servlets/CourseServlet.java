@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "CourseServlet", value = "/Course/CourseServlet")
 public class CourseServlet extends HttpServlet {
@@ -38,13 +39,22 @@ public class CourseServlet extends HttpServlet {
             }
             String clubName = request.getParameter("cname");
             String courseName = request.getParameter("ccname");
-            String par = request.getParameter("parname");
+            String[] par = request.getParameterValues("par");
             String city = request.getParameter("LCname");
             String state = request.getParameter("LSname");
 
+            if (par.length >= 19){
+                request.setAttribute("errorMessage", "Failed to add a course. Please try again later.");
+                request.getRequestDispatcher("/Course/Course.jsp").forward(request, response);
+            }
+
             MySQLdb db = MySQLdb.getInstance();
             CourseModel cm = null;
-            cm = new CourseModel(0, clubName, courseName, city, state, par, 0);
+            ArrayList<Integer> newPar = new ArrayList<>();
+            for (int index = 0; index < par.length; index++){
+               newPar.add(Integer.parseInt(par[index]));
+            }
+            cm = new CourseModel(0, clubName, courseName, city, state, newPar, 0);
             if (db.addCourse(cm, am)){
                 request.setAttribute("successMessage", "Course has been successfully added");
                 request.getRequestDispatcher("/Course/Course.jsp").forward(request, response);

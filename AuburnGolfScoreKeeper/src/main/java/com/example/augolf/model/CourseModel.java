@@ -1,15 +1,18 @@
 package com.example.augolf.model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class CourseModel {
     private int courseId;
     private String clubName;
     private String courseName;
     private String courseCity;
     private String courseState;
-    private String coursePar;
+    private ArrayList<Integer> coursePar;
     private int locked;
 
-    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, String coursePar, int locked) {
+    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, ArrayList<Integer> coursePar, int locked) {
         this.courseId = courseId;
         this.clubName = clubName;
         this.courseName = courseName;
@@ -59,11 +62,11 @@ public class CourseModel {
         this.courseState = courseState;
     }
 
-    public String getCoursePar() {
+    public ArrayList<Integer> getCoursePar() {
         return coursePar;
     }
 
-    public void setCoursePar(String coursePar) {
+    public void setCoursePar(ArrayList<Integer> coursePar) {
         this.coursePar = coursePar;
     }
 
