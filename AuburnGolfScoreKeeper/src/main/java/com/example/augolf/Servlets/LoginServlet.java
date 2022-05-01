@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
                 //ToDo Need to actually use the AccountStatusXML
                 //Is the user approved
                 if (userModel.getAccountStatusId() == 3){
-                    request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
                 }
                 //Checking if user is pending
                 else if (userModel.getAccountStatusId() == 1){

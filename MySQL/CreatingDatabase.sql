@@ -90,13 +90,13 @@ INSERT INTO user (firstName, lastName, userName, email, password, gender, isActi
 values ("User", "Auburn", "userPending", "userPending@agsk.com", "userPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
 
 INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("User", "Auburn", "userApproved", "userApproved@agsk.com", "userAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
+values ("User", "Auburn", "userApproved", "userApproved@agsk.com", "userApprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
 
 INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
+values ("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 2, now(), now(), "SYSTEM");
 
 INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
+values ("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 2, now(), now(), "SYSTEM");
 
 INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModAprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
+values ("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModApprovedGolf", -1, 1, 3, 2, now(), now(), "SYSTEM");

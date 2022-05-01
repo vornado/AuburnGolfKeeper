@@ -48,4 +48,13 @@
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/Admin/AdminServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.AccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/AccountServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

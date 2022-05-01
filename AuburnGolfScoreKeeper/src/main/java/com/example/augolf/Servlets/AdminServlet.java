@@ -7,7 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 @WebServlet(name = "AdminServlet", value = "/Admin/AdminServlet")
@@ -39,7 +39,7 @@ public class AdminServlet extends HttpServlet {
         catch ( Exception ex){
             //Google's Nest Error Message! Easter Egg!
             request.setAttribute("errorMessage", "Something went wrong! Please Try Again in a few seconds!");
-            request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
+            request.getRequestDispatcher("../index.jsp").forward(request, response);
         }
     }
 
@@ -47,7 +47,54 @@ public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
-            
+            String userId = request.getParameter("userId");
+            int userRoleId = Integer.parseInt(request.getParameter("userRoleId"));
+            int userStatusId = Integer.parseInt(request.getParameter("userStatusId"));
+
+            if (am.getAccountRoleId() == 1){
+               //ToDo return access denied
+            }
+
+            MySQLdb db = MySQLdb.getInstance();
+            AccountModel user = db.getUserById(Integer.parseInt(userId));
+            if (user.getAccountRoleId() != userRoleId && user.getAccountStatusId() != userStatusId) {
+                user.setAccountRoleId(userRoleId);
+                user.setAccountStatusId(userStatusId);
+                if (!db.updateUser(user, am)){
+                    request.setAttribute("errorMessage", "Username or Password is invalid.");
+                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
+                    //ToDo send a message when it works
+                }
+                else{
+                    request.setAttribute("successMessage", "User's Status and Role has been successfully update.");
+                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request,response);
+                }
+            }
+            else if (user.getAccountRoleId() != userRoleId){
+                user.setAccountRoleId(userRoleId);
+                if (!db.updateUserRole(user,am)){
+                    request.setAttribute("errorMessage", "Username or Password is invalid.");
+                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
+                }
+                else{
+                    request.setAttribute("successMessage", "User's Role has been successfully update.");
+                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request,response);
+                }
+            }
+            else if (user.getAccountStatusId() != userStatusId){
+                user.setAccountStatusId(userStatusId);
+                if (!db.updateUserStatus(user,am)){
+                    request.setAttribute("errorMessage", "Username or Password is invalid.");
+                    request.getRequestDispatcher("../Admin/AdminServlet").forward(request, response);
+                }
+                else{
+                    request.setAttribute("successMessage", "User's Status has been successfully update.");
+                    doGet(request, response);
+                }
+            }
+            else{
+                //ToDo report a failure
+            }
         }
         catch(Exception ex){
 
