@@ -14,10 +14,7 @@
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="../Login/Login.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
-        <a href="../About/About.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Score</a>
-        <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add Course</a>
-        <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Admin</a>
+        <a href="../About/AboutIndex.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 
     <!-- Navbar on small screens -->
@@ -25,16 +22,13 @@
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="../Login/Login.jsp" class="w3-bar-item w3-button w3-padding-large">Login</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Registration</a>
-        <a href="../About/About.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
-        <a href="../Score/Score.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Score</a>
-        <a href="../Course/Course.jsp" class="w3-bar-item w3-button w3-padding-large">Update/Add Course</a>
-        <a href="../Admin/Admin.jsp" class="w3-bar-item w3-button w3-padding-large">Admin</a>
+        <a href="../About/AboutIndex.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
     </div>
 </div>
 <h2>Auburn Golfkeeper Forgot Password Page</h2>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
-<form action="RegisterServlet" method="post">
+<form action="RegisterServlet" method="POST">
 
     <div class="container">
         <h1>Registration</h1>

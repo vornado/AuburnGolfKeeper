@@ -13,7 +13,7 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="../Home/home.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
-        <a href="../SignUp/SignUpIndex.jsp"  class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
+        <a href="../SignUp/SignUp.jsp"  class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Registration</a>
         <a href="../About/AboutIndex.jsp" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 
@@ -21,7 +21,7 @@
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
         <a href="../index.jsp" class="w3-bar-item w3-button w3-padding-large">Home</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="../SignUp/SignUpIndex.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
+        <a href="../SignUp/SignUp.jsp" class="w3-bar-item w3-button w3-padding-large">Registration</a>
         <a href="../About/AboutIndex.jsp" class="w3-bar-item w3-button w3-padding-large">About</a>
     </div>
 </div>
@@ -32,6 +32,7 @@
         <div class="container">
             <h1>Login</h1>
             <label><b>Username</b></label>
+            <div style="color: #FF0000;">${errorMessage}</div>
             <input id="username" class="login-form-field" type="text" placeholder="Username" name="uname" required>
             <label><b>Password</b></label>
             <input type="password" placeholder="Password" name="psw" required class="login-form-field">
