@@ -6,7 +6,8 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
            href="javascript:void(0);" title="Toggle Navigation Menu"><i
                 class="fa fa-bars"></i></a>
-        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" href="/AuburnGolfScoreKeeper_war_exploded/index.jsp">Home</a>
+        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+           href="/AuburnGolfScoreKeeper_war_exploded/index.jsp">Home</a>
         <%
             HttpSession userSession = request.getSession();
             if (userSession == null || userSession.getAttribute("userToken") == null) {
@@ -19,6 +20,9 @@
         } else {
         %>
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" onclick="logout()">Logout</a>
+        <%
+            if (((AccountModel) userSession.getAttribute("userToken")).getAccountStatusId() == 3) {
+        %>
         <a href="/AuburnGolfScoreKeeper_war_exploded/Score/Score.jsp"
            class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
             Score</a>
@@ -26,9 +30,10 @@
            class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
             Course</a>
         <%
+                }
             }
             if (userSession != null && userSession.getAttribute("userToken") != null) {
-                if (((AccountModel) userSession.getAttribute("userToken")).getAccountRoleId() == 3) {
+                if (((AccountModel) userSession.getAttribute("userToken")).getAccountRoleId() == 3 || ((AccountModel) userSession.getAttribute("userToken")).getAccountRoleId() == 2) {
         %>
         <a href="/AuburnGolfScoreKeeper_war_exploded/Admin/AdminServlet"
            class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Admin</a>
@@ -39,16 +44,16 @@
         <a href="/AuburnGolfScoreKeeper_war_exploded/About/About.jsp"
            class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
-<script>
-    function logout() {
-        fetch("${pageContext.request.contextPath}/AccountServlet", {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'}
-        }).then(res => {
-            window.location.href = '/AuburnGolfScoreKeeper_war_exploded/index.jsp'
-        });
-    }
-</script>
+    <script>
+        function logout() {
+            fetch("${pageContext.request.contextPath}/AccountServlet", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => {
+                window.location.href = '/AuburnGolfScoreKeeper_war_exploded/index.jsp'
+            });
+        }
+    </script>
 </div>
 <br>
 <br>
