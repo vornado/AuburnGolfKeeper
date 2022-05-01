@@ -52,9 +52,12 @@ public class CourseServlet extends HttpServlet {
             CourseModel cm = null;
             ArrayList<Integer> newPar = new ArrayList<>();
             for (int index = 0; index < par.length; index++){
+                if (par[index] == ""){
+                    break;
+                }
                newPar.add(Integer.parseInt(par[index]));
             }
-            cm = new CourseModel(0, clubName, courseName, city, state, newPar, 0);
+            cm = new CourseModel(0, clubName, courseName, city, state, newPar);
             if (db.addCourse(cm, am)){
                 request.setAttribute("successMessage", "Course has been successfully added");
                 request.getRequestDispatcher("/Course/Course.jsp").forward(request, response);

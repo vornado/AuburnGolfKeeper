@@ -10,16 +10,14 @@ public class CourseModel {
     private String courseCity;
     private String courseState;
     private ArrayList<Integer> coursePar;
-    private int locked;
 
-    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, ArrayList<Integer> coursePar, int locked) {
+    public CourseModel(int courseId, String clubName, String courseName, String courseCity, String courseState, ArrayList<Integer> coursePar) {
         this.courseId = courseId;
         this.clubName = clubName;
         this.courseName = courseName;
         this.courseCity = courseCity;
         this.courseState = courseState;
         this.coursePar = coursePar;
-        this.locked = locked;
     }
 
     public int getCourseId() {
@@ -68,13 +66,5 @@ public class CourseModel {
 
     public void setCoursePar(ArrayList<Integer> coursePar) {
         this.coursePar = coursePar;
-    }
-
-    public int getLocked(){
-        return locked;
-    }
-
-    public void setLocked(int locked){
-        this.locked = locked;
     }
 }
