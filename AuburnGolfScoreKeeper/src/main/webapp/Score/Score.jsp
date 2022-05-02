@@ -72,6 +72,10 @@
 
     </style>
     <title>Auburn Golf Keeper</title>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <meta charset=utf-8 />
 </head>
 <body>
 <br>
@@ -159,8 +163,26 @@
             </table>
             <br>
             <div class="Upload Upload-theme-dragdropbox">
-                <input style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;" name="files[]" id="filer_input2" multiple="multiple" type="file">
-                <div class="Upload-input-dragDrop"><div class="Upload-input-inner"><div class="Upload-input-icon"><i class="fa fa-file-image-o"></i></div><div class="Upload-input-text"><h3>Drag&amp;Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="Upload-input-choose-btn blue">Browse Files</a></div></div>
+                <input  style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;" name="files[]" id="filer_input2" multiple="multiple" type="file" onchange="readURL(this);">
+                <center>
+                    <br>
+                    <br>
+                    <img id="blah" src="#" alt="Image Will Display Here" />
+                    <br>
+                    <br>
+                </center>
+                <div class="Upload-input-dragDrop" >
+                    <div class="Upload-input-inner">
+                        <div class="Upload-input-icon">
+                            <i class="fa fa-file-image-o"></i>
+                        </div>
+                        <div class="Upload-input-text">
+                            <h3>Drag&amp;Drop files here</h3>
+                            <span style="display:inline-block; margin: 15px 0">or</span>
+                        </div>
+                        <a class="Upload-input-choose-btn blue">Browse Files</a>
+                    </div>
+                </div>
             </div>
             <br>
             <button type="submit">Submit</button>
@@ -174,6 +196,20 @@
             var preview = document.getElementById("file-ip-1-preview");
             preview.src = src;
             preview.style.display = "block";
+        }
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
         }
     }
 </script>
