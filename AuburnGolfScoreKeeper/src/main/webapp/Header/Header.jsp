@@ -23,12 +23,14 @@
         <%
             if (((AccountModel) userSession.getAttribute("userToken")).getAccountStatusId() == 3) {
         %>
-        <a href="/AuburnGolfScoreKeeper_war_exploded/Score/Score.jsp"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
+        <a href="/AuburnGolfScoreKeeper_war_exploded/Course/CourseServlet"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add
             Score</a>
         <a href="/AuburnGolfScoreKeeper_war_exploded/Course/Course.jsp"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add
             Course</a>
+        <a href="/AuburnGolfScoreKeeper_war_exploded/Score/ScoreServlet"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">View Scores</a>
         <%
                 }
             }

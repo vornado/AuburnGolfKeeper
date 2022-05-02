@@ -57,4 +57,13 @@
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/AccountServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ScoreServlet</servlet-name>
+        <servlet-class>com.example.augolf.Servlets.ScoreServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScoreServlet</servlet-name>
+        <url-pattern>/Score/ScoreServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

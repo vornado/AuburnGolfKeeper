@@ -1551,7 +1551,3 @@ span.psw {
     border: 1px solid #ccc;
     border-top: none;
 }
-table { height: 1px; } /* Will be ignored, don't worry. */
-tr { height: 100%; }
-td { height: 100%; }
-td > div { height: 100%; }
