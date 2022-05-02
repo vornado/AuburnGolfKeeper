@@ -7,6 +7,7 @@ import com.example.augolf.model.ScoreCardModel;
 
 import java.sql.*;
 import java.lang.String;
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.DateFormat;
@@ -68,10 +69,15 @@ public class MySQLdb {
             String courseCity = resultSet.getString("courseCity");
             String courseState = resultSet.getString("courseState");
             ArrayList<Integer> par = new ArrayList<Integer>();
-            for (int index = 1; index != 19; index++) {
-                par.add(resultSet.getInt("scoreHole" + index));
+            for (int index = 1; index < 19; index++) {
+                Integer idParent = (Integer)  resultSet.getObject("parHole" + index);
+                if (idParent != null){
+                    par.add(resultSet.getInt("parHole" + index));
+                }
+                else{
+                    break;
+                }
             }
-            int locked = resultSet.getInt("locked");
             return new CourseModel(courseId, clubName, courseName, courseCity, courseState, par);
         } catch (SQLException e) {
             return null;
@@ -87,9 +93,13 @@ public class MySQLdb {
             for (int index = 1; index != 19; index++) {
                 score.add(resultSet.getInt("scoreHole" + index));
             }
-            int locked = resultSet.getInt("locked");
             Blob picture = (Blob) resultSet.getBlob("picture");
-            return new ScoreCardModel(scoreCardId, userId, courseId, score, locked, picture);
+            ScoreCardModel sc = new ScoreCardModel(scoreCardId, userId, courseId, score, picture);
+            sc.setClubName(resultSet.getString("clubName"));
+            sc.setCourseCity(resultSet.getString("courseCity"));
+            sc.setCourseState(resultSet.getString("courseState"));
+            sc.setCourseName(resultSet.getString("courseName"));
+            return sc;
         } catch (SQLException ex) {
             return null;
         }
@@ -154,9 +164,15 @@ public class MySQLdb {
         }
     }
 
-    public ArrayList<ScoreCardModel> getAllUser(AccountModel am){
+    public ArrayList<ScoreCardModel> getUsersScoreCard(AccountModel am){
         try{
-            String query = "SELECT * FROM scorecardlookup where userId= ? AND isActive= ?";
+            String query = "SELECT scl.scorecardId, scl.userId, cl.courseName, scl.courseId, cl.courseCity," +
+                    " cl.clubName, cl.courseCity, cl.courseState, scl.scoreHole1, scl.scoreHole2, " +
+                    "scl.scoreHole3, scl.scoreHole4, scl.scoreHole5, scl.scoreHole6, scl.scoreHole7, " +
+                    "scl.scoreHole8, scl.scoreHole9, scl.scoreHole10, scl.scoreHole11, scl.scoreHole12, " +
+                    "scl.scoreHole13, scl.scoreHole14, scl.scoreHole15, scl.scoreHole16, scl.scoreHole17, " +
+                    "scl.scoreHole18, scl.picture FROM scorecardlookup as scl inner join courselookup as cl " +
+                    "on scl.courseId = cl.courseId where scl.userId= ? AND scl.isActive= ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, am.getAccountId());
             preparedStatement.setInt(2, 1);
@@ -401,9 +417,9 @@ public class MySQLdb {
     public boolean addCourse(CourseModel cm, AccountModel am) {
         try {
             String query = "INSERT INTO courselookup (clubName, courseName, courseCity, courseState, " +
-                    "scoreHole1, scoreHole2, scoreHole3, scoreHole4, scoreHole5, scoreHole6, scoreHole7, scoreHole8, " +
-                    "scoreHole9, scoreHole10, scoreHole11, scoreHole12, scoreHole13, scoreHole14, scoreHole15, " +
-                    "scoreHole16, scoreHole17, scoreHole18, " +
+                    "parHole1, parHole2, parHole3, parHole4, parHole5, parHole6, parHole7, parHole8, " +
+                    "parHole9, parHole10, parHole11, parHole12, parHole13, parHole14, parHole15, " +
+                    "parHole16, parHole17, parHole18, " +
                     "createdDate, lastModified, lastModifiedBy, isActive) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
@@ -434,25 +450,34 @@ public class MySQLdb {
         }
     }
 
-    public boolean addScoreCard(ScoreCardModel scm, CourseModel cm, AccountModel am) {
+    public boolean addScoreCard(ScoreCardModel scm, int courseId, AccountModel am) {
         try {
-            String query = "INSERT INTO scorecardlookup (userId, courseId, score, locked, picture, createdDate, lastModified, lastModifiedBy, isActive) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO scorecardlookup (userId, courseId," +
+                    "scoreHole1, scoreHole2, scoreHole3, scoreHole4, scoreHole5, scoreHole6, scoreHole7, scoreHole8, " +
+                    "scoreHole9, scoreHole10, scoreHole11, scoreHole12, scoreHole13, scoreHole14, scoreHole15, " +
+                    "scoreHole16, scoreHole17, scoreHole18, " +
+                    "picture, createdDate, lastModified, lastModifiedBy, isActive) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String currentTime = getDateTime(new Date());
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, am.getAccountId());
-            preparedStatement.setInt(2, cm.getCourseId());
+            preparedStatement.setInt(2, courseId);
             ArrayList<Integer> tempScore = scm.getScore();
             Iterator<Integer> iter = tempScore.iterator();
-            for (int index = 1; index != 19; index++) {
-                preparedStatement.setInt(index + 2, iter.next());
+            int index = 3;
+            while (iter.hasNext()){
+                preparedStatement.setInt(index, iter.next());
+                index++;
             }
-            preparedStatement.setInt(21, scm.getLocked());
-            preparedStatement.setBlob(22, scm.getPicture());
-            preparedStatement.setString(23, currentTime);
-            preparedStatement.setString(24, currentTime);
-            preparedStatement.setString(25, am.getUserName());
-            preparedStatement.setInt(26, 1);
+            while (index != 21){
+                preparedStatement.setNull(index, Types.INTEGER);
+                index++;
+            }
+            preparedStatement.setBlob(index++, scm.getPicture());
+            preparedStatement.setString(index++, currentTime);
+            preparedStatement.setString(index++, currentTime);
+            preparedStatement.setString(index++, am.getUserName());
+            preparedStatement.setInt(index++, 1);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet == 1;
         } catch (SQLException ex) {
@@ -463,6 +488,24 @@ public class MySQLdb {
     //endregion
 
     //region Update
+
+    public boolean updatePersonalPassword(AccountModel am, String password){
+        try{
+            String query = "UPDATE user SET password= ?, lastModified= ?, lastModifiedBy= ? where userName= ? AND isActive= ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            Date now = new Date();
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, getDateTime(now));
+            preparedStatement.setString(3, getDateTime(now));
+            preparedStatement.setString(4, am.getUserName());
+            preparedStatement.setInt(5, 1);
+            int resultSet = preparedStatement.executeUpdate();
+            return resultSet == 1;
+        }
+        catch (Exception ex){
+            return false;
+        }
+    }
 
     public String generatingPassword(AccountModel am) {
         try {

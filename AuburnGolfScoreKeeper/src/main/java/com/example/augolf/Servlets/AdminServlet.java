@@ -18,7 +18,7 @@ public class AdminServlet extends HttpServlet {
             AccountModel am = (AccountModel) request.getSession().getAttribute("userToken");
             if (am == null) {
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
-                request.getRequestDispatcher("/SignUp/SignUp.jsp").forward(request, response);
+                request.getRequestDispatcher("../SignUp/SignUp.jsp").forward(request, response);
                 return;
             }
             if (am.getAccountRoleId() == 1) {
@@ -30,10 +30,10 @@ public class AdminServlet extends HttpServlet {
             ArrayList<AccountModel> listAM = db.getAllUsers();
             if (listAM == null){
                 request.setAttribute("errorMessage", "Failed to get all the users. Please try again later!");
-                request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
+                request.getRequestDispatcher("../Admin/Admin.jsp").forward(request, response);
             }
             request.setAttribute("users", listAM);
-            request.getRequestDispatcher("/Admin/Admin.jsp").forward(request, response);
+            request.getRequestDispatcher("../Admin/Admin.jsp").forward(request, response);
             return;
         }
         catch ( Exception ex){

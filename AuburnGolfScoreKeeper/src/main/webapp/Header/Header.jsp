@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.example.augolf.model.AccountModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link type='text/css' rel='stylesheet' href='/AuburnGolfScoreKeeper_war_exploded/Header/HeaderStyle.css'/>
@@ -23,12 +24,16 @@
         <%
             if (((AccountModel) userSession.getAttribute("userToken")).getAccountStatusId() == 3) {
         %>
-        <a href="/AuburnGolfScoreKeeper_war_exploded/Score/Score.jsp"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
+        <a href="/AuburnGolfScoreKeeper_war_exploded/Course/CourseServlet"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add
             Score</a>
         <a href="/AuburnGolfScoreKeeper_war_exploded/Course/Course.jsp"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Update/Add
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add
             Course</a>
+        <a href="/AuburnGolfScoreKeeper_war_exploded/Score/ScoreServlet"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">View Scores</a>
+        <a href="/AuburnGolfScoreKeeper_war_exploded/Account/UserProfile.jsp"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><c:out value="${sessionScope.userToken.getUserName()}"/></a>
         <%
                 }
             }
@@ -47,7 +52,7 @@
     <script>
         function logout() {
             fetch("${pageContext.request.contextPath}/AccountServlet", {
-                method: "POST",
+                method: "GET",
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
                 window.location.href = '/AuburnGolfScoreKeeper_war_exploded/index.jsp'

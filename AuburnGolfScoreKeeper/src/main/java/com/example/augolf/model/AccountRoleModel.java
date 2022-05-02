@@ -2,28 +2,28 @@ package com.example.augolf.model;
 
 public class AccountRoleModel {
 
-    private int statusNumber;
-    private String statusName;
+    private int roleNumber;
+    private String roleName;
 
-    public AccountRoleModel(int statusNumber, String statusName) {
-        this.statusNumber = statusNumber;
-        this.statusName = statusName;
+    public AccountRoleModel(int roleNumber, String roleName) {
+        this.roleNumber = roleNumber;
+        this.roleName = roleName;
     }
 
-    public int getStatusNumber() {
-        return statusNumber;
+    public int getRoleNumber() {
+        return roleNumber;
     }
 
-    public void setStatusNumber(int statusNumber) {
-        this.statusNumber = statusNumber;
+    public void seRoleNumber(int roleNumber) {
+        this.roleNumber = roleNumber;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getRoleName() {
+        return roleName;
     }
 
     public void setStatusName(String statusName) {
-        this.statusName = statusName;
+        this.roleName = roleName;
     }
 
 }
