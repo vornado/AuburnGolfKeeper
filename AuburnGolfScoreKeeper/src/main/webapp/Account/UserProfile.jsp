@@ -8,19 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Auburn Golf Score Keeper - User Profile</title>
+    <title>Auburn Golf Score Keeper</title>
+    <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <jsp:include page="../Header/Header.jsp"/>
+<br>
+<br>
 <body>
-<div class="container">
-   <form method="post" action="/AuburnGolfScoreKeeper_war_exploded/AccountServlet">
-       <label>Update Password</label>
-       <input type="password" id="newpassword" placeholder="New Password" name="password">
-       <br>
-       <input type="password" id="newConfirmPassword" placeholder="Confirm New Password">
-       <input type="submit">
-   </form>
-</div>
+    <form method="post" action="/AuburnGolfScoreKeeper_war_exploded/AccountServlet">
+        <div class="container">
+               <h1>Users Profile</h1>
+               <label><b>Update Password</b></label>
+               <input type="password" id="newpassword" placeholder="New Password" name="password">
+               <br>
+                <label><b>Confirm Password</b></label>
+               <input type="password" id="newConfirmPassword" placeholder="Confirm New Password">
+               <button type="submit" id="login-form-submit">Submit</button>
+
+        </div>
+    </form>
 </body>
 </html>
 <script>
