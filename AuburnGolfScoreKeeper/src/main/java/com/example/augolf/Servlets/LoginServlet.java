@@ -21,13 +21,13 @@ public class LoginServlet extends HttpServlet {
         //If somehow the user information was passed null reject it
         if (username == null || password == null) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
-            request.getRequestDispatcher("/Login/login.jsp").forward(request, response);
+            request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
         }
 
         //If somehow the user information was passed blank reject it
         if (username.length() == 0 || password.length() == 0) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
-            request.getRequestDispatcher("/Login/login.jsp").forward(request, response);
+            request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
         }
         try {
             //trying to find user in the db table
@@ -36,30 +36,32 @@ public class LoginServlet extends HttpServlet {
             userModel = db.doLogin(username, password);
             ReadXML status = new ReadXML();
             status.readFile("accountStatusLookup.xml");
+            status.readFile("accountRoleLookup.xml");
 
             //unable to find user throw them the default error
             if (userModel == null) {
                 //No user found
                 request.setAttribute("errorMessage", "Username or Password is invalid.");
-                request.getRequestDispatcher("/Login/login.jsp").forward(request, response);
+                request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
             } else {
                 //Found the user
                 HttpSession session = request.getSession();
                 session.setAttribute("userToken", userModel);
                 session.setAttribute("golfStatus", status.getAsm());
+                session.setAttribute("golfRole", status.getArm());
 
                 //ToDo Need to actually use the AccountStatusXML
                 //Is the user approved
                 if (userModel.getAccountStatusId() == 3){
-                    request.getRequestDispatcher("/Home/home.jsp").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
                 }
                 //Checking if user is pending
                 else if (userModel.getAccountStatusId() == 1){
-                    request.getRequestDispatcher("/Account/Wait.jsp").forward(request, response);
+                    request.getRequestDispatcher("../Account/Wait.jsp").forward(request, response);
                 }
                 //failed to find the user send them to denied
                 else{
-                    request.getRequestDispatcher("/Account/Deny.jsp").forward(request, response);
+                    request.getRequestDispatcher("../Account/Deny.jsp").forward(request, response);
                 }
             }
 

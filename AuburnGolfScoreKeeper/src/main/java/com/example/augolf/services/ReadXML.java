@@ -26,7 +26,7 @@ public class ReadXML {
     }
 
     public void readFile(String fileName) {
-        if (fileName != "accountRoleLookup.xml" || fileName != "accountStatusLookup.xml"){
+        if (fileName != "accountRoleLookup.xml" && fileName != "accountStatusLookup.xml"){
             //This would be an excellent logging for whenever someone tried to read custom files to load
             return;
         }

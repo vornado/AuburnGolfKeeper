@@ -1,14 +1,14 @@
 <AccountStatus>
     <Status>
         <ID>1</ID>
-        <Name>pending</Name>
+        <Name>Pending</Name>
     </Status>
     <Status>
         <ID>2</ID>
-        <Name>denied</Name>
+        <Name>Denied</Name>
     </Status>
     <Status>
         <ID>3</ID>
-        <Name>approved</Name>
+        <Name>Approved</Name>
     </Status>
 </AccountStatus>
