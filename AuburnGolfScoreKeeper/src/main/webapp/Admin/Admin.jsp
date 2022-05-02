@@ -41,16 +41,16 @@
                             </td>
                             <td>
                                 <select name="userStatusId" id="status-${status.index}">
-                                    <option value="1" ${item.getAccountStatusId() == 1 ? "selected" : ""}>Pending</option>
-                                    <option value="2" ${item.getAccountStatusId() == 2 ? "selected" : ""}>Denied</option>
-                                    <option value="3" ${item.getAccountStatusId() == 3 ? "selected" : ""}>Approved</option>
+                                    <c:forEach items="${sessionScope.golfStatus}" var="tempItem" varStatus="newStatus" >
+                                        <option value="${tempItem.getStatusNumber()}" ${item.getAccountStatusId() == tempItem.getStatusNumber() ? "selected" : ""}><c:out value="${tempItem.getStatusName()}"/></option>
+                                    </c:forEach>
                                 </select>
                             </td>
                             <td>
                                 <select name="userRoleId" id="role-${status.index}">
-                                    <option value="1" ${item.getAccountRoleId() == 1 ? "selected" : ""}>User</option>
-                                    <option value="2" ${item.getAccountRoleId() == 2 ? "selected" : ""}>Moderator</option>
-                                    <option value="3" ${item.getAccountRoleId() == 3 ? "selected" : ""}>Admin</option>
+                                    <c:forEach items="${sessionScope.golfRole}" var="tempItem" varStatus="newStatus" >
+                                        <option value="${tempItem.getRoleNumber()}" ${item.getAccountRoleId() == tempItem.getRoleNumber() ? "selected" : ""}><c:out value="${tempItem.getRoleName()}"/></option>
+                                    </c:forEach>
                                 </select>
                             </td>
                             <td>

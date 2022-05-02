@@ -7,6 +7,7 @@ import com.example.augolf.model.ScoreCardModel;
 
 import java.sql.*;
 import java.lang.String;
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.DateFormat;
@@ -487,6 +488,24 @@ public class MySQLdb {
     //endregion
 
     //region Update
+
+    public boolean updatePersonalPassword(AccountModel am, String password){
+        try{
+            String query = "UPDATE user SET password= ?, lastModified= ?, lastModifiedBy= ? where userName= ? AND isActive= ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            Date now = new Date();
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, getDateTime(now));
+            preparedStatement.setString(3, getDateTime(now));
+            preparedStatement.setString(4, am.getUserName());
+            preparedStatement.setInt(5, 1);
+            int resultSet = preparedStatement.executeUpdate();
+            return resultSet == 1;
+        }
+        catch (Exception ex){
+            return false;
+        }
+    }
 
     public String generatingPassword(AccountModel am) {
         try {

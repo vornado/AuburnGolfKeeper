@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
             userModel = db.doLogin(username, password);
             ReadXML status = new ReadXML();
             status.readFile("accountStatusLookup.xml");
+            status.readFile("accountRoleLookup.xml");
 
             //unable to find user throw them the default error
             if (userModel == null) {
@@ -47,6 +48,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("userToken", userModel);
                 session.setAttribute("golfStatus", status.getAsm());
+                session.setAttribute("golfRole", status.getArm());
 
                 //ToDo Need to actually use the AccountStatusXML
                 //Is the user approved
