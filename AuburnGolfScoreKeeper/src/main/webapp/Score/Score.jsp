@@ -3,8 +3,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .Upload {
+            font-family: sans-serif;
+            font-size: 14px;
+            color: #494949;
+            position: relative;
+
+
+        }
+        .Upload * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .Upload-input-dragDrop {
+            display: block;
+            width: 343px;
+            margin: 0 auto 25px auto;
+            padding: 25px;
+            color: #8d9499;
+            color: #97A1A8;
+            background: #fff;
+            border: 2px dashed #C8CBCE;
+            text-align: center;
+            -webkit-transition: box-shadow 0.3s, border-color 0.3s;
+            -moz-transition: box-shadow 0.3s, border-color 0.3s;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .Upload-input-dragDrop .Upload-input-icon {
+            font-size: 48px;
+            margin-top: -10px;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+        .Upload-input-text h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .Upload-input-text span {
+            font-size: 12px;
+        }
+        .Upload-input-choose-btn.blue {
+            color: #051160;
+            border: 1px solid #051160;
+        }
+        .Upload-input-choose-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: bold;
+            color: #051160;
+            border-radius: 3px;
+            border: 1px solid #c6c6c6;
+            vertical-align: middle;
+            background-color: #fff;
+            box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+    </style>
     <title>Auburn Golf Keeper</title>
-    <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <body>
 <br>
@@ -91,16 +158,9 @@
                 </tr>
             </table>
             <br>
-            <div class="center">
-                <div class="form-input">
-                    <div class="preview">
-                        <img id="file-ip-1-preview">
-                    </div>
-                    <label for="file-ip-1"><b>Upload Image</b></label>
-                    <br>
-                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-                    <br>
-                </div>
+            <div class="Upload Upload-theme-dragdropbox">
+                <input style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;" name="files[]" id="filer_input2" multiple="multiple" type="file">
+                <div class="Upload-input-dragDrop"><div class="Upload-input-inner"><div class="Upload-input-icon"><i class="fa fa-file-image-o"></i></div><div class="Upload-input-text"><h3>Drag&amp;Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="Upload-input-choose-btn blue">Browse Files</a></div></div>
             </div>
             <br>
             <button type="submit">Submit</button>

@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Auburn Golf Score Keeper</title>
-    <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <body>
 <br>

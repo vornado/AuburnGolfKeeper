@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Auburn Golf Score Keeper</title>
-    <link rel="stylesheet" href="LoginStyle.css">
 </head>
 <jsp:include page="../Header/Header.jsp"/>
 <br>
