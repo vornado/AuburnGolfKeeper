@@ -23,7 +23,6 @@
             <br>
             <a href="../SignUp/SignUp.jsp" style="color:darkblue; text-decoration: none">New Account/ Register User</a>
             <br>
-
         </div>
     </form>
 </body>
