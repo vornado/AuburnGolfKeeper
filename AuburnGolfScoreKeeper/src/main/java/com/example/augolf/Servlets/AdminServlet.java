@@ -68,6 +68,7 @@ public class AdminServlet extends HttpServlet {
                 else{
                     request.setAttribute("successMessage", "User's Status and Role has been successfully update.");
                     doGet(request, response);
+                    return;
                 }
             }
             else if (user.getAccountRoleId() != userRoleId){
@@ -75,10 +76,12 @@ public class AdminServlet extends HttpServlet {
                 if (!db.updateUserRole(user,am)){
                     request.setAttribute("errorMessage", "Unable to update user's role");
                     doGet(request, response);
+                    return;
                 }
                 else{
                     request.setAttribute("successMessage", "User's Role has been successfully update.");
                     doGet(request, response);
+                    return;
                 }
             }
             else if (user.getAccountStatusId() != userStatusId){
@@ -86,20 +89,24 @@ public class AdminServlet extends HttpServlet {
                 if (!db.updateUserStatus(user,am)){
                     request.setAttribute("errorMessage", "Unable to update user's stauts");
                     doGet(request, response);
+                    return;
                 }
                 else{
                     request.setAttribute("successMessage", "User's Status has been successfully update.");
                     doGet(request, response);
+                    return;
                 }
             }
             else{
                 request.setAttribute("errorMessage", "Unable to update user's stauts");
                 doGet(request, response);
+                return;
             }
         }
         catch(Exception ex){
             request.setAttribute("errorMessage", "Unable to update user's stauts");
             doGet(request, response);
+            return;
         }
     }
 }

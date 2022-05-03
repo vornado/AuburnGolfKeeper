@@ -29,17 +29,20 @@ public class ForgotPasswordServlet extends HttpServlet {
                     //throw an error
                     request.setAttribute("errorMessageUsername", "The username provided is not valid. Please enter a valid username.");
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
 
                 if (email.indexOf("@") == -1){
                     //throw an error
                     request.setAttribute("errorMessageEmail", "The email provided is not valid. Please enter a valid username.");
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
 
                 if (db.checkEmailValid(email) ){
                     request.setAttribute("errorMessage", "The all information provided must match our records for a password reset.");
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
 
                 AccountModel am = null;
@@ -47,6 +50,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                 if (am == null || !am.getFirstName().equals(firstName) || !am.getUserName().equals(username)){
                     request.setAttribute("errorMessage", "The all information provided must match our records for a password reset.");
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
                 String password = null;
                 password = db.generatingPassword(am);
@@ -54,20 +58,24 @@ public class ForgotPasswordServlet extends HttpServlet {
                 if (password == null){
                     request.setAttribute("errorMessage", "Failed to reset password. Please try again later.");
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
                 else{
                     request.setAttribute("newPassword", "Your new password is " + password);
                     request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                    return;
                 }
             }
             catch (Exception ex){
                 request.setAttribute("errorMessage", "Sorry, the information you provided is not on our system.");
                 request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+                return;
             }
         }
         catch (Exception ex){
             request.setAttribute("errorMessage", "Sorry, the information you provided is not on our system.");
             request.getRequestDispatcher("/ForgotPassword/ForgotPassword.jsp").forward(request, response);
+            return;
         }
     }
 }

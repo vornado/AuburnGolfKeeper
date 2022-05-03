@@ -26,13 +26,16 @@ public class ScoreServlet extends HttpServlet {
             if (listAM == null){
                 request.setAttribute("errorMessage", "Failed to get all the users. Please try again later!");
                 request.getRequestDispatcher("../Score/ScoreCard.jsp").forward(request, response);
+                return;
             }
             request.setAttribute("scoreCard", listAM);
             request.getRequestDispatcher("../Score/ScoreCard.jsp").forward(request, response);
+            return;
         } catch (Exception ex) {
             //Google's Nest Error Message! Easter Egg!
             request.setAttribute("errorMessage", "Something went wrong! Please Try Again in a few seconds!");
             request.getRequestDispatcher("/Score/Score.jsp").forward(request, response);
+            return;
         }
     }
 
@@ -46,6 +49,7 @@ public class ScoreServlet extends HttpServlet {
             if (courseId == "-1") {
                 request.setAttribute("errorMessage", "Please Select a Course");
                 request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+                return;
             }
 
             MySQLdb db = MySQLdb.getInstance();
@@ -61,13 +65,16 @@ public class ScoreServlet extends HttpServlet {
             if (db.addScoreCard(scm, Integer.parseInt(courseId), am)) {
                 request.setAttribute("successMessage", "Course has been successfully added");
                 request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+                return;
             } else {
                 request.setAttribute("errorMessage", "Score failed to upload");
                 request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+                return;
             }
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Score failed to upload");
             request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+            return;
         }
     }
 }

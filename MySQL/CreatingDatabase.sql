@@ -97,22 +97,14 @@ CREATE TABLE `augolfdb`.`user` (
 use augolfdb;
     
 INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Admin", "Auburn", "AUAdmin", "admin@agsk.com", "adminGolf", -1, 1, 3, 3, now(), now(), "SYSTEM");
+values ("Admin", "Auburn", "AUAdmin", "admin@agsk.com", "adminGolf", -1, 1, 3, 3, now(), now(), "SYSTEM"),
+("User", "Auburn", "userDenied", "userDenied@agsk.com", "userDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM"),
+("User", "Auburn", "userPending", "userPending@agsk.com", "userPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM"),
+("User", "Auburn", "userApproved", "userApproved@agsk.com", "userApprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM"),
+("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 2, now(), now(), "SYSTEM"),
+("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 2, now(), now(), "SYSTEM"),
+("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModApprovedGolf", -1, 1, 3, 2, now(), now(), "SYSTEM");
 
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("User", "Auburn", "userDenied", "userDenied@agsk.com", "userDeniedGolf", -1, 1, 2, 1, now(), now(), "SYSTEM");
-
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("User", "Auburn", "userPending", "userPending@agsk.com", "userPendingGolf", -1, 1, 1, 1, now(), now(), "SYSTEM");
-
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("User", "Auburn", "userApproved", "userApproved@agsk.com", "userApprovedGolf", -1, 1, 3, 1, now(), now(), "SYSTEM");
-
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModDenied", "ModDenied@agsk.com", "ModDeniedGolf", -1, 1, 2, 2, now(), now(), "SYSTEM");
-
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModPending", "ModPending@agsk.com", "ModPendingGolf", -1, 1, 1, 2, now(), now(), "SYSTEM");
-
-INSERT INTO user (firstName, lastName, userName, email, password, gender, isActive, accountStatusId, accountRoleId, createdDate, lastModified, lastModifiedBy)
-values ("Mod", "Auburn", "ModApproved", "ModApproved@agsk.com", "ModApprovedGolf", -1, 1, 3, 2, now(), now(), "SYSTEM");
+INSERT INTO courselookup (clubName, courseName, courseCity, courseState, parHole1, parHole2, parHole3, parHole4, parHole5, parHole6, parHole7, parHole8, parHole9, parHole10, parHole11, parHole12, parHole13, parHole14, parHole15, parHole17, parHole18, createdDate, lastModified, lastModifiedBy, isActive)
+Values ('Robert Trent Jones Golf Course', 'Short Course', 'Owens Cross Roads', 'Alabama', 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, now(), now(), 'SYSTEM', 1),
+('Robert Trent Jones Golf Course', 'Highlands','Owens Cross Roads', 'Alabama', 4, 5, 3, 4, 4, 4, 3, 5, 4, 3, 4, 4, 4, 5, 3, 5, 4, now(), now(), 'SYSTEM', 1)

@@ -99,6 +99,7 @@ public class MySQLdb {
             sc.setCourseCity(resultSet.getString("courseCity"));
             sc.setCourseState(resultSet.getString("courseState"));
             sc.setCourseName(resultSet.getString("courseName"));
+            sc.setDatePlayed(resultSet.getDate("lastModified").toString());
             return sc;
         } catch (SQLException ex) {
             return null;
@@ -171,7 +172,7 @@ public class MySQLdb {
                     "scl.scoreHole3, scl.scoreHole4, scl.scoreHole5, scl.scoreHole6, scl.scoreHole7, " +
                     "scl.scoreHole8, scl.scoreHole9, scl.scoreHole10, scl.scoreHole11, scl.scoreHole12, " +
                     "scl.scoreHole13, scl.scoreHole14, scl.scoreHole15, scl.scoreHole16, scl.scoreHole17, " +
-                    "scl.scoreHole18, scl.picture FROM scorecardlookup as scl inner join courselookup as cl " +
+                    "scl.scoreHole18, scl.picture, scl.lastModified FROM scorecardlookup as scl inner join courselookup as cl " +
                     "on scl.courseId = cl.courseId where scl.userId= ? AND scl.isActive= ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, am.getAccountId());
@@ -534,8 +535,6 @@ public class MySQLdb {
             if (resultSet == 1) {
                 return generatedString;
             } else if (resultSet != 1) {
-                //panic
-                //ToDo: consider implementing a logger
                 return null;
             } else {
                 return null;

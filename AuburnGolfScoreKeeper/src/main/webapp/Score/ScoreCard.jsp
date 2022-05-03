@@ -19,6 +19,7 @@
         <table class="w3-table-all w3-table w3-bordered">
             <tr>
                 <th>Course Played</th>
+                <th>Game Played</th>
                 <c:forEach var="index" begin="1" end="18">
                     <th><c:out value="Hole-${index}"/></th>
                 </c:forEach>
@@ -26,7 +27,10 @@
             <c:forEach var="item" items="${requestScope.scoreCard}" varStatus="status">
                 <div>
                     <tr>
-                        <td><c:out value="${item.getCourseName()} ${item.getClubName()} ${item.getCourseCity()} ${item.getCourseState()}" /> </td>
+                        <td>
+                            <c:out value="${item.getCourseName()} ${item.getClubName()} ${item.getCourseCity()} ${item.getCourseState()}" />
+                        </td>
+                        <td><c:out value="${item.getDatePlayed()}"/></td>
                         <c:forEach var="score" items="${item.getScore()}" varStatus="newStatus">
                             <td><c:out value="${score}"/></td>
                         </c:forEach>

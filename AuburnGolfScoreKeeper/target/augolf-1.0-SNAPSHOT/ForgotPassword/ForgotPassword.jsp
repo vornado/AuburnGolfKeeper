@@ -8,6 +8,7 @@
 </head>
 <body>
 <jsp:include page="../Header/Header.jsp"/>
+<br>
 <%--PHP Login Form: Guide to Create a Login Form in PHP
 https://www.simplilearn.com/tutorials/php-tutorial/php-login-form--%>
 <form action="ForgotPasswordServlet" method="post">
