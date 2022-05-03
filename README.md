@@ -15,19 +15,17 @@ Get the Lastest Version of Java
 
 We used
 
-JRE 1.8.0_321
-JDK 1.8.0_321
+1. JRE 1.8.0_321
+2.JDK 1.8.0_321
 
-Get the Lastest Stable Version of Tomcat
+3.Get the Lastest Stable Version of Tomcat
+**
+Tomcat Version 8.5.78**
 
-We used
+4.Get the Lastest version of MySQL Community
 
-Tomcat Version 8.5.78
-
-Get the Lastest version of MySQL Community
-
-MySQL username must be root
-MYSQL password must be password
+** MySQL username must be root
+ MYSQL password must be password**
 ---------------------------------
 
 Setup
