@@ -14,20 +14,14 @@ https://github.com/vornado/AuburnGolfKeeper/
 ----- Requirements ----------
 
 Requirements to run the codebase
-Get the Lastest Version of Java
-
-We used
-
+**1. Get the Lastest Version of Java**
 JRE 1.8.0_321
 JDK 1.8.0_321
 
-Get the Lastest Stable Version of Tomcat
-
-We used
-
+**2. Get the Lastest Stable Version of Tomcat**
 Tomcat Version 8.5.78
 
-Get the Lastest version of MySQL Community
+**3. Get the Lastest version of MySQL Community**
 
 MySQL username must be root
 MYSQL password must be password
