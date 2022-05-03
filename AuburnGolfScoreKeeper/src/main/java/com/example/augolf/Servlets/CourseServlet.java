@@ -30,9 +30,11 @@ public class CourseServlet extends HttpServlet {
             }
             request.setAttribute("courses", cm);
             request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+            return;
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Failed to load courses. Please try again later");
             request.getRequestDispatcher("../Score/Score.jsp").forward(request, response);
+            return;
         }
     }
 
@@ -43,6 +45,7 @@ public class CourseServlet extends HttpServlet {
             if (am == null) {
                 request.setAttribute("errorMessage", "You need to sign in or sign up to access this page!");
                 request.getRequestDispatcher("../Home/home.jsp").forward(request, response);
+                return;
             }
             String clubName = request.getParameter("cname");
             String courseName = request.getParameter("ccname");
@@ -53,6 +56,7 @@ public class CourseServlet extends HttpServlet {
             if (par.length >= 19) {
                 request.setAttribute("errorMessage", "Failed to add a course. Please try again later.");
                 request.getRequestDispatcher("../Course/Course.jsp").forward(request, response);
+                return;
             }
 
             MySQLdb db = MySQLdb.getInstance();
@@ -68,13 +72,16 @@ public class CourseServlet extends HttpServlet {
             if (db.addCourse(cm, am)) {
                 request.setAttribute("successMessage", "Course has been successfully added");
                 request.getRequestDispatcher("../Course/Course.jsp").forward(request, response);
+                return;
             } else {
                 request.setAttribute("errorMessage", "Failed to add a course. Please try again later.");
                 request.getRequestDispatcher("../Course/Course.jsp").forward(request, response);
+                return;
             }
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Failed to add a course. Please try again later.");
             request.getRequestDispatcher("../Course/Course.jsp").forward(request, response);
+            return;
         }
     }
 }

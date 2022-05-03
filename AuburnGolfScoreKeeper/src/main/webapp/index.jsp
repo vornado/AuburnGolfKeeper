@@ -24,7 +24,7 @@
                 <div class="w3-twothird">
                     <h1>Score</h1>
                     <h5 class="w3-padding-32">Score Your Game </h5>
-                    <p class="w3-text-grey">Our platform allows users to score their games with a golf handicap. Users can add or update their scores depending on the course</p>
+                    <p class="w3-text-grey">Have you played golf before? If so add your score to our system and track how you are doing.</p>
                 </div>
                 <div class="w3-third w3-center">
                     <i class="fa-solid fa-golf-ball-tee" style="font-size:200px;color:#ff5d00;"></i>

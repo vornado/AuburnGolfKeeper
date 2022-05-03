@@ -14,6 +14,15 @@ public class ScoreCardModel {
     private String clubName;
     private String courseState;
     private String courseCity;
+    private String DatePlayed;
+
+    public String getDatePlayed() {
+        return DatePlayed;
+    }
+
+    public void setDatePlayed(String datePlayed) {
+        DatePlayed = datePlayed;
+    }
 
     public String getCourseName() {
         return courseName;

@@ -22,12 +22,14 @@ public class LoginServlet extends HttpServlet {
         if (username == null || password == null) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
             request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
+            return;
         }
 
         //If somehow the user information was passed blank reject it
         if (username.length() == 0 || password.length() == 0) {
             request.setAttribute("errorMessage", "Username or Password is invalid.");
             request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
+            return;
         }
         try {
             //trying to find user in the db table
@@ -43,6 +45,7 @@ public class LoginServlet extends HttpServlet {
                 //No user found
                 request.setAttribute("errorMessage", "Username or Password is invalid.");
                 request.getRequestDispatcher("../Login/Login.jsp").forward(request, response);
+                return;
             } else {
                 //Found the user
                 HttpSession session = request.getSession();
@@ -50,18 +53,20 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("golfStatus", status.getAsm());
                 session.setAttribute("golfRole", status.getArm());
 
-                //ToDo Need to actually use the AccountStatusXML
                 //Is the user approved
                 if (userModel.getAccountStatusId() == 3){
                     response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    return;
                 }
                 //Checking if user is pending
                 else if (userModel.getAccountStatusId() == 1){
                     request.getRequestDispatcher("../Account/Wait.jsp").forward(request, response);
+                    return;
                 }
                 //failed to find the user send them to denied
                 else{
                     request.getRequestDispatcher("../Account/Deny.jsp").forward(request, response);
+                    return;
                 }
             }
 

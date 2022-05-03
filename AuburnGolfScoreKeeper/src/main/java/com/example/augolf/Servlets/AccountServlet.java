@@ -24,13 +24,16 @@ public class AccountServlet extends HttpServlet {
             if (!db.updatePersonalPassword(am, newPassword)) {
                 request.setAttribute("errorMessage", "Failed to update password");
                 request.getRequestDispatcher("/Account/UserProfile.jsp").forward(request, response);
+                return;
             }
             request.getSession().invalidate();
             response.sendRedirect(request.getContextPath() +  "/index.jsp");
+            return;
         }
         catch (Exception ex){
             request.setAttribute("errorMessage", "Failed to update password");
             request.getRequestDispatcher("/Account/UserProfile.jsp").forward(request, response);
+            return;
         }
     }
 }
