@@ -11,7 +11,7 @@
 <jsp:include page="../Header/Header.jsp" />
 <div class="w3-display-middle">
     <h1 class="w3-jumbo w3-animate-top w3-center"><code>Access Denied</code></h1>
-    <hr class="w3-border-white w3-animate-left" style="margin:auto;width:50%">
+    <hr class="w3-border-white w3-animate-left" style="margin:auto;width:100%">
     <h3 class="w3-center w3-animate-right">You dont have permission to view this site.</h3>
     <h3 class="w3-center w3-animate-zoom">🚫🚫🚫🚫</h3>
 </div>

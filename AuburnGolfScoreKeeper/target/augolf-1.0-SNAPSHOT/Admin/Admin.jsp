@@ -11,6 +11,7 @@
     <jsp:include page="../Header/Header.jsp"/>
 </div>
 <br>
+<br>
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title" style="text-align: center;">
@@ -54,7 +55,7 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="submit" value="Update"></input>
+                                <button type="submit" class="button" role="button" style="width: 30%">Update</button>
                             </td>
                     </form>
                     </tr>
